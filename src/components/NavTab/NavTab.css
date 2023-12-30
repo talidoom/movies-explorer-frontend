@@ -1,0 +1,26 @@
+.nav-tab {
+  margin: 0 70px 75px;
+}
+
+.nav-tab_link {
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color:#FFFFFF;
+  padding: 10px 20px;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-tab {
+    margin: 0 0 76px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .nav-tab {
+    margin: 0 0 30px;
+  }
+}

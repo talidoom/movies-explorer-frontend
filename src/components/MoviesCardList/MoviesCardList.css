@@ -1,0 +1,11 @@
+.movies-cardlist {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0;
+  max-width: 100%;
+  gap: 32px 20px;
+  align-items: center;
+  align-content: space-between;
+  justify-content: center;
+}
