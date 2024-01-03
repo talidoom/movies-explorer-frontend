@@ -38,19 +38,20 @@
 }
 
 .button_type_account {
+  width: 100px;
+  height: 32px;
+  background: none;
+  cursor: pointer;
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
-  padding: 9px 0 9px 11px;
   box-sizing: border-box;
-  width: 100px;
   text-align: left;
   color: #fff;
   display: inline-block;
-  background-image: url('../../images/profile-svg.svg');
+  background-image: url('../../images/account-svg.svg');
   background-repeat: no-repeat;
-  background-size: 26px;
-  background-position: right center;
+  background-position: center;
 }
 
 .button_type_search {
@@ -73,7 +74,7 @@
   width: 100%;
   border-radius: 6px;
   background: none;
-  margin: 60px auto 71px;
+  margin: 50px auto 80px;
   padding: 11px 0 9px;
   border: 1px solid #424242;
   color: #fff;
@@ -86,7 +87,6 @@
   background-size: fill;
   width: 20px;
   height: 20px;
-  margin-right: 12px;
   background-color: #222222;
 }
 
@@ -97,7 +97,6 @@
 .button_type_movie-delete {
   width: 14px;
   height: 12px;
-  margin-right: 12px;
   background: inherit;
   color: #fff;
   background-image: url('../../images/delete-button.svg');
@@ -164,16 +163,16 @@
     display: block;
   }
 
-  .button_type_more {
-    margin: 80px auto 51px;
-  }
-
   .button_type_profile-edit {
     margin-top: 196px;
   }
 
   .button_type_account {
     display: none;
+  }
+
+  .button_type_account-mobile {
+    display: block;
   }
 }
 
@@ -189,12 +188,6 @@
     right: 18px;
   }
 
-  .button_type_movies-like {
-    position: absolute;
-    top: 16px;
-    right: -44px;
-  }
-
   .button_type_burger-button {
     width: 22px;
     height: 24px;
@@ -202,7 +195,7 @@
   }
 
   .button_type_more {
-    margin: 72px 0;
+    margin: 61px auto 89px;
   }
 
   .button_type_profile-edit {

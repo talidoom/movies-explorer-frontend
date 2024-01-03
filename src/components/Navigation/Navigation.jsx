@@ -1,64 +1,43 @@
-import './Navigation.css';
-import { NavLink } from 'react-router-dom';
+import React from "react"
+import { Link, NavLink } from "react-router-dom"
+import "./Navigation.css"
+import account from "../../images/account-svg.svg"
+import Button from "../Button/Button"
 
-const Navigation = ({ navStyle, closeSide }) => {
+function Navigation({ closeSide }) {
+  const setActive = ({ isActive }) =>
+    isActive ? "navigation__link_active" : "navigation__link"
+
   return (
-    <section>
-      {navStyle === 'header-menu' && (
-        <nav className={'navigation'}>
-          <NavLink
-            onClick={closeSide}
-            to='/movies'
-            className={({ isActive }) =>
-              `navigation__link ${isActive ? 'navigation__link_active' : ''}`
-            }
-          >
+    <div className="navigation__overlay">
+      <div className="navigation__overlay-container"></div>
+      <div className="navigation__menu">
+        <Button type={'close-menu'} onClick={closeSide} />
+        <nav className="navigation__links">
+          <NavLink to="/" className={setActive}>
+            Главная
+          </NavLink>
+          <NavLink to="/movies" onClick={closeSide} className={setActive}>
             Фильмы
           </NavLink>
           <NavLink
+            to="/saved-movies"
             onClick={closeSide}
-            to='/saved-movies'
-            className={({ isActive }) =>
-              `navigation__link ${isActive ? 'navigation__link_active' : ''}`
-            }
+            className={setActive}
           >
             Сохранённые фильмы
           </NavLink>
         </nav>
-      )}
-      {navStyle === 'side-menu' && (
-        <nav className={'side-navigation'}>
-          <NavLink
-            onClick={closeSide}
-            to='/'
-            className={({ isActive }) =>
-              `side-navigation__link ${isActive ? 'side-navigation__link_active' : ''}`
-            }
-          >
-            Главная
-          </NavLink>
-          <NavLink
-            onClick={closeSide}
-            to='/movies'
-            className={({ isActive }) =>
-              `side-navigation__link ${isActive ? 'side-navigation__link_active' : ''}`
-            }
-          >
-            Фильмы
-          </NavLink>
-          <NavLink
-            onClick={closeSide}
-            to='/saved-movies'
-            className={({ isActive }) =>
-              `side-navigation__link ${isActive ? 'side-navigation__link_active' : ''}`
-            }
-          >
-            Сохраненные фильмы
-          </NavLink>
-        </nav>
-      )}
-    </section>
-  );
-};
+        <Link
+          to="/profile"
+          className="navigation__account-button"
+          onClick={closeSide}
+        >
+          <img src={account} alt="аккаунт" />
+        </Link>
+      </div>
+    </div>
+  )
+}
 
-export default Navigation;
+export default Navigation

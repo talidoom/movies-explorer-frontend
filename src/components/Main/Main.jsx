@@ -7,10 +7,14 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 
-const Main = ({ isLoggedIn, openSide }) => {
+const Main = ({ isLoggedIn, openSide, closeSide}) => {
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} openSide={openSide} />
+      <Header
+        isLoggedIn={isLoggedIn}
+        openSide={openSide}
+        closeSide={closeSide}
+      />
 
       <main className='main'>
         <Promo />

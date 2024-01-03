@@ -1,83 +1,83 @@
-.filter-checkbox {
+.filter {
   display: flex;
   align-items: center;
   margin: 32px 0 0;
 }
 
-.filter-checkbox__checkbox {
+.filter__checkbox {
   display: none;
 }
 
-.filter-checkbox__container {
+.filter__container {
   position: absolute;
-  border-radius: 20px;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  border-radius: 20px;
   background-color: #ebebeb;
   transition: 0.2s ease-in;
   cursor: pointer;
 }
 
-.filter-checkbox__switch {
+.filter__switch {
   position: relative;
   width: 36px;
-  height: 20px;
   margin-right: 14px;
+  height: 20px;
 }
 
-.filter-checkbox__container:before {
+.filter__container:before {
   position: absolute;
   content: "";
   left: 3px;
-  bottom: 3px;
   height: 15px;
   width: 15px;
   border-radius: 50%;
   background-color: #f5f5f5;
   transition: 0.2s ease-in;
+  bottom: 3px;
 }
 
-.filter-checkbox__checkbox:checked + .filter-checkbox__container:before {
+.filter__checkbox:checked + .filter__container:before {
   background-color: #f5f5f5;
   transform: translateX(16px);
 }
 
-.filter-checkbox__checkbox:checked + .filter-checkbox__container {
+.filter__checkbox:checked + .filter__container {
   background-color: #3DDC84;
 }
 
-.filter-checkbox__title {
+.filter__title {
   margin: 0;
   font-size: 13px;
 }
 
 @media screen and (max-width: 768px) {
-  .filter-checkbox {
+  .filter {
     flex-direction: row-reverse;
     margin-top: 30px;
   }
 
-  .filter-checkbox__title {
+  .filter__title {
     margin-right: 16px;
   }
 
-  .filter-checkbox__switch {
+  .filter__switch {
     margin: 0;
   }
 }
 
 @media screen and (max-width: 414px) {
-  .filter-checkbox {
+  .filter {
     margin-top: 40px;
   }
 
-  .filter-checkbox__switch {
+  .filter__switch {
     margin-right: 72px;
   }
 
-  .filter-checkbox__title {
+  .filter__title {
     font-size: 11px;
     margin-right: 13px;
   }

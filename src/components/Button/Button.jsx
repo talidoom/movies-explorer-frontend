@@ -1,17 +1,11 @@
 import { Link } from 'react-router-dom';
 import './Button.css';
 
-const Button = ({ text, type, closeSide, onClick }) => {
+const Button = ({ text, type, onClick }) => {
   return (
     <>
-      {type === 'login' ? (
-        <Link className='button button_type_login' to='/signin'>
-          {text}
-        </Link>
-      ) :
-      type === 'account' ? (
+      {type === 'account' ? (
         <Link
-          onClick={closeSide}
           className='button button_type_account'
           to='/profile'
         >
@@ -32,7 +26,7 @@ const Button = ({ text, type, closeSide, onClick }) => {
       ${type === 'movies-like' && 'button_type_movies-like'}
       ${type === 'movies-delete' && 'button_type_movie-delete'}
       ${type === 'close-menu' && 'button_type_close'}
-      ${type === 'burger-button' && 'button_type_burger-button'}`}
+      `}
         >
           {text}
         </button>

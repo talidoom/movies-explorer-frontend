@@ -7,7 +7,7 @@ const AboutMe = () => {
     <section id="student" className="about-me">
       <Title title={"Студент"} />
       <div className="about-me__content">
-        <div className="about-me__info">
+        <div className="about-me__block">
           <p className="about-me__name">Тори</p>
           <p className="about-me__job">Фронтенд-разработчик, 30 лет</p>
           <p className="about-me__text">

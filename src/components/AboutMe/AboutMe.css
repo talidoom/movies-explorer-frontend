@@ -8,7 +8,7 @@
   margin: 66px 0 0 0;
 }
 
-.about-me__info {
+.about-me__block {
   display: flex;
   flex-direction: column;
 }
@@ -97,7 +97,7 @@
     margin-top: 60px;
   }
 
-  .about-me__info {
+  .about-me__block {
     width: 100%;
     margin-top: 40px;
   }
@@ -126,7 +126,7 @@
     line-height: 40px;
   }
 
-  .about-me__info {
+  .about-me__block {
     width: 100%;
     margin-top: 39px;
   }

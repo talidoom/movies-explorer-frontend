@@ -11,7 +11,7 @@ const MoviesCard = () => {
         className='movies-card__link'
         rel='noreferrer'
         target='_blank'
-        href='https://www.kinopoisk.ru/film/1302273/?utm_referrer=www.google.com'
+        href='https://www.kinopoisk.ru/film/1302273/'
       >
         <img
           className='movies-card__image'
@@ -22,7 +22,7 @@ const MoviesCard = () => {
       <div className='movies-card__info'>
         <div>
           <p className='movies-card__title'>
-            33 слова о дизайне
+          33 слова о дизайне
           </p>
         <div className='movies-card__time'>1ч 42м</div>
         </div>
