@@ -8,7 +8,7 @@
   }
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 360px) {
   .saved-movies {
     padding: 0 10px;
   }

@@ -6,19 +6,19 @@ const AboutProject = () => {
     <section className="about-project" id="about-project">
       <Title title={"О проекте"} />
       <div className="about-project__block">
-        <div className="about-project__block-container">
-          <p className="about-project__block-title">
+        <div className="about-project__info">
+          <p className="about-project__info-title">
             Дипломный проект включал 5 этапов
           </p>
-          <p className="about-project__block-text">
+          <p className="about-project__info-text">
           Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.
           </p>
         </div>
-        <div className="about-project__block-container">
-          <p className="about-project__block-title">
+        <div className="about-project__info">
+          <p className="about-project__info-title">
             На выполнение диплома ушло 5 недель
           </p>
-          <p className="about-project__block-text">
+          <p className="about-project__info-text">
           У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.
           </p>
         </div>

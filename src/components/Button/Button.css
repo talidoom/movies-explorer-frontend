@@ -64,6 +64,9 @@
   background-position: center;
   border-radius: 48px;
   color: #fff;
+  position: absolute;
+  right: 10px;
+  top: 13px;
 }
 
 .button_type_more {
@@ -176,7 +179,7 @@
   }
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 360px) {
   .button_type_header-login {
     font-size: 10px;
     margin-left: 15px;
@@ -220,5 +223,9 @@
     max-width: 260px;
     margin-top: 267px;
     padding: 14px 0;
+  }
+  .button_type_search{
+    top: 9px;
+    right: 9px;
   }
 }

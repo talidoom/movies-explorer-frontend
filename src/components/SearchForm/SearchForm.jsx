@@ -14,6 +14,7 @@ const SearchForm = () => {
             name='search'
             minLength='1'
             required
+            type='search'
           />
           <Button type='search' buttonType='submit' />
         </div>

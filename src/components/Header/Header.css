@@ -23,28 +23,34 @@
 
 .header__container_movies {
   display: flex;
+  justify-content: center;
 }
 
 .header__button {
   font-size: 13px;
   line-height: 18px;
+  font-weight: 400;
   text-decoration: none;
   color: #fff;
-  border-bottom: 2px solid transparent;
   transition: opacity 0.3s ease-in;
+}
+.header__button:first-of-type {
   margin-right: 16px;
 }
 
 .header__button_active {
   font-size: 13px;
+  font-weight: 500;
   line-height: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  margin-right: 16px;
-  border-bottom: 2px solid #fff;
   color: #fff;
+}
+
+.header__button_active:first-of-type {
+  margin-right: 16px;
 }
 
 .header__button:hover {
@@ -88,7 +94,7 @@
   }
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 360px) {
   .header {
     padding: 15px 14px;
   }

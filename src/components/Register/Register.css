@@ -96,7 +96,7 @@
   }
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 390px) {
   .register {
     padding: 56px 0 29px;
     align-items: center;
