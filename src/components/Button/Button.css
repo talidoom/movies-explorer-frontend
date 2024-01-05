@@ -125,7 +125,6 @@
   line-height: 16px;
   color: #fff;
   background-color: inherit;
-  margin-top: 204px;
 }
 
 .button_type_logout {
@@ -166,10 +165,6 @@
     display: block;
   }
 
-  .button_type_profile-edit {
-    margin-top: 196px;
-  }
-
   .button_type_account {
     display: none;
   }
@@ -179,7 +174,7 @@
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 440px) {
   .button_type_header-login {
     font-size: 10px;
     margin-left: 15px;
@@ -203,7 +198,7 @@
 
   .button_type_profile-edit {
     font-size: 12px;
-    margin-top: 363px;
+    margin-top: 0;
   }
 
   .button_type_logout {

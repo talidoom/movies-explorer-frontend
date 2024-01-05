@@ -116,7 +116,7 @@
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 440px) {
   .about-me {
     padding: 90px 14px 70px;
   }

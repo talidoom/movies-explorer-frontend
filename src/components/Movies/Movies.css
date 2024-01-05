@@ -8,7 +8,7 @@
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 440px) {
   .movies {
     padding: 0 10px 29px;
   }

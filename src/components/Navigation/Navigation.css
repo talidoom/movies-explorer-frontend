@@ -76,7 +76,7 @@
   }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 440px) {
   .navigation__menu {
     padding: 144px 10px 46px 10px;
     width: 100%;

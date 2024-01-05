@@ -38,7 +38,7 @@
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 440px) {
   .sidebar-menu__container {
     padding: 145px 0 41px;
   }

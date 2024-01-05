@@ -96,7 +96,7 @@
   }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 440px) {
   .login {
     padding: 56px 0 32px;
     align-items: center;
