@@ -7,9 +7,10 @@ const MoviesCardList = () => {
   const location = useLocation();
 
   return (
-    <section>
+    <>
       {location.pathname === '/movies' && (
         <ul className='movies-cardlist'>
+          <MoviesCard />
           <MoviesCard />
           <MoviesCard />
           <MoviesCard />
@@ -30,7 +31,7 @@ const MoviesCardList = () => {
         </ul>
       )}
       {location.pathname === '/movies' && <Button text={'Ещё'} type={'more'} />}
-    </section>
+    </>
   );
 };
 

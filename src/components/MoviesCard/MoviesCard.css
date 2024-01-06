@@ -56,12 +56,15 @@
   .movies-card{
     width: 339px;
   }
-  .movies-card__title {
-    max-width: 229px;
-  }
+
   .movies-card__image {
     width: 339px;
   }
+
+  .movies-card__title {
+    max-width: 229px;
+  }
+
   .movies-card__info{
     max-width: 339px;
   }
@@ -72,11 +75,11 @@
     max-width: 300px;
   }
 
-  .movies-card__title {
-    max-width: 260px;
-  }
   .movies-card__image {
     width: 300px;
   }
 
+  .movies-card__title {
+    max-width: 260px;
+  }
 }
