@@ -1,5 +1,5 @@
 import './Footer.css';
-import { currentDate } from '../../utils/constants/constants';
+import { nowDate } from '../../utils/constants/constants';
 
 const Footer = () => {
   return (
@@ -7,7 +7,7 @@ const Footer = () => {
       <p className='footer__text'>Учебный проект Яндекс.Практикум х BeatFilm.</p>
 
       <div className='footer__container'>
-        <p className='footer__copyright'>&copy; {currentDate}</p>
+        <p className='footer__copyright'>&copy; {nowDate}</p>
 
         <ul className='footer__lists'>
           <li className='footer__list'>

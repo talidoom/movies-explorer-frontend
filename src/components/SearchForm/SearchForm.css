@@ -1,5 +1,5 @@
 .search {
-  padding: 70px 0 77px;
+  padding: 70px 0 47px;
   display: flex;
   flex-direction: column;
 }
@@ -33,7 +33,7 @@
 
 @media screen and (max-width: 768px) {
   .search {
-    padding: 60px 0 80px;
+    padding: 80px 0 30px;
   }
   .search__input {
     max-width: 708px;
@@ -42,7 +42,7 @@
 
 @media screen and (max-width: 440px) {
   .search {
-    padding: 90px 0 51px;
+    padding: 84px 0 50px;
   }
   .search__input {
     font-size: 18px;

@@ -54,6 +54,31 @@
   background-position: center;
 }
 
+.button_type_movies-like {
+  background-image: url('../../images/like.svg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: fill;
+  width: 20px;
+  height: 20px;
+  background-color: #222222;
+}
+
+.button_type_movies-like_active {
+  background-image: url('../../images/like_active.svg');
+}
+
+.button_type_movie-delete {
+  width: 14px;
+  height: 12px;
+  background: inherit;
+  color: #fff;
+  background-image: url('../../images/delete-button.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+}
+
 .button_type_search {
   display: block;
   width: 34px;
@@ -81,31 +106,6 @@
   padding: 11px 0 9px;
   border: 1px solid #424242;
   color: #fff;
-}
-
-.button_type_movies-like {
-  background-image: url('../../images/like.svg');
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: fill;
-  width: 20px;
-  height: 20px;
-  background-color: #222222;
-}
-
-.button_type_movies-like_active {
-  background-image: url('../../images/like_active.svg');
-}
-
-.button_type_movie-delete {
-  width: 14px;
-  height: 12px;
-  background: inherit;
-  color: #fff;
-  background-image: url('../../images/delete-button.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  object-fit: cover;
 }
 
 .button_type_register {
@@ -193,7 +193,7 @@
   }
 
   .button_type_more {
-    margin: 61px auto 89px;
+    max-width: 240px;
   }
 
   .button_type_profile-edit {

@@ -8,4 +8,20 @@
   align-items: center;
   align-content: space-between;
   justify-content: center;
+  margin: 70px 0 30px ;
+}
+
+@media screen and (max-width: 768px) {
+  .movies-cardlist {
+    gap: 36px 30px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .movies-cardlist {
+    margin: 40px 0 30px;
+    flex-direction: column;
+    gap: 20px;
+    align-content: center;
+  }
 }
