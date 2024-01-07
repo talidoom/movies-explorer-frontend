@@ -6,7 +6,8 @@
   display: flex;
   justify-content: flex-start;
   padding: 0 0 23px 0;
-  border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid #FFFFFF;
+  letter-spacing: -0.04em;
 }
 
 @media screen and (max-width: 440px) {

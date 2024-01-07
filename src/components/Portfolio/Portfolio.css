@@ -8,7 +8,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.11;
-  color: #A0A0A0;
+  color: #8B8B8B;
 }
 
 .portfolio__lists {
@@ -40,9 +40,10 @@
 
 .portfolio__link-text {
   margin: 0;
+  letter-spacing: -0.04em;
 }
 
-.portfolio__link-symbol {
+.portfolio__link-point {
   margin: 0;
 }
 

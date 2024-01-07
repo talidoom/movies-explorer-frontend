@@ -8,8 +8,8 @@ const AboutMe = () => {
       <Title title={"Студент"} />
       <div className="about-me__content">
         <div className="about-me__block">
-          <p className="about-me__name">Тори</p>
-          <p className="about-me__job">Фронтенд-разработчик, 30 лет</p>
+          <p className="tabout-me__title">Тори</p>
+          <p className="tabout-me__info">Фронтенд-разработчик, 30 лет</p>
           <p className="about-me__text">
             Я родилась в городе Нижневартовск, затем переехала в Москву, где закончила МПГУ им. Ленина, как художник.
             Но уже по окончанию институ я поняла, что меня влечет область IT и программирование.

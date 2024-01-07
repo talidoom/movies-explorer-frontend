@@ -13,7 +13,7 @@ const Portfolio = () => {
             rel='noreferrer'
           >
             <p className='portfolio__link-text'>Статичный сайт</p>
-            <p className='portfolio__link-symbol'>&#x2197;</p>
+            <p className='portfolio__link-point'>&#x2197;</p>
           </a>
         </li>
         <li className='portfolio__list'>
@@ -24,7 +24,7 @@ const Portfolio = () => {
             rel='noreferrer'
           >
             <p className='portfolio__link-text'>Адаптивный сайт</p>
-            <p className='portfolio__link-symbol'>&#x2197;</p>
+            <p className='portfolio__link-point'>&#x2197;</p>
           </a>
         </li>
         <li className='portfolio__list'>
@@ -35,7 +35,7 @@ const Portfolio = () => {
             rel='noreferrer'
           >
             <p className='portfolio__link-text'>Одностраничное приложение</p>
-            <p className='portfolio__link-symbol'>&#x2197;</p>
+            <p className='portfolio__link-point'>&#x2197;</p>
           </a>
         </li>
       </ul>

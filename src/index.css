@@ -2,18 +2,16 @@
 @import url('./vendor/fonts/fonts.css');
 
 body {
-  color: #fff;
+  background-color: #202020;
   max-width: 1280px;
   width: 100%;
   min-width: 320px;
   margin: 0 auto;
-  background-color: #202020;
   font-family: 'Inter', Arial, sans-serif;
+  color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
 }
