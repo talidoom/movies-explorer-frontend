@@ -4,7 +4,7 @@
   margin: 32px 0 0;
 }
 
-.filter__checkbox {
+.filter__check {
   display: none;
 }
 
@@ -39,12 +39,12 @@
   bottom: 3px;
 }
 
-.filter__checkbox:checked + .filter__container:before {
+.filter__check:checked + .filter__container:before {
   background-color: #f5f5f5;
   transform: translateX(16px);
 }
 
-.filter__checkbox:checked + .filter__container {
+.filter__check:checked + .filter__container {
   background-color: #3DDC84;
 }
 
@@ -70,8 +70,8 @@
 
 @media screen and (max-width: 440px) {
   .filter {
-    margin-top: 40px;
     justify-content: center;
+    margin-top: 40px;
   }
 
   .filter__switch {

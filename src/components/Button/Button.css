@@ -149,32 +149,19 @@
   right: 27px;
 }
 
-.button_type_burger-button {
-  background-image: url('../../images/burger-button.svg');
-  background-color: inherit;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 44px;
-  height: 44px;
-  object-fit: cover;
-  display: none;
-}
-
 @media screen and (max-width: 768px) {
-  .button_type_burger-button {
-    display: block;
-  }
-
   .button_type_account {
     display: none;
-  }
-
-  .button_type_account-mobile {
-    display: block;
   }
 }
 
 @media screen and (max-width: 440px) {
+
+  .button_type_search{
+    top: 9px;
+    right: 9px;
+  }
+
   .button_type_header-login {
     font-size: 10px;
     margin-left: 15px;
@@ -184,12 +171,6 @@
   .button_type_close {
     top: 18px;
     right: 18px;
-  }
-
-  .button_type_burger-button {
-    width: 22px;
-    height: 24px;
-    margin-right: 9px;
   }
 
   .button_type_more {
@@ -218,9 +199,5 @@
     max-width: 260px;
     margin-top: 267px;
     padding: 14px 0;
-  }
-  .button_type_search{
-    top: 9px;
-    right: 9px;
   }
 }
