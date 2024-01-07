@@ -50,12 +50,11 @@
 
 .about-me__img {
   width: 270px;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 10px;
   font-size: 13px;
   font-weight: 400;
   color: #fff;
-  border-radius: 10px;
 }
 
 @media screen and (max-width: 768px) {

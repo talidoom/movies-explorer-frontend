@@ -2,11 +2,11 @@ import "./NavTab.css";
 
 const NavTab = () => {
   return (
-    <section className="nav-tab">
+    <div className="nav-tab">
         <a className="nav-tab_link" href="#about-project" target="_self">
           Узнать больше
         </a>
-    </section>
+    </div>
   );
 };
 

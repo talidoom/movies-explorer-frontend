@@ -25,10 +25,10 @@ const AboutProject = () => {
       </div>
 
       <div className="about-project__timeline">
-        <div className="about-project__stage about-project__stage_type_backend">
+        <div className="about-project__stage about-project__stage-backend">
           1 неделя
         </div>
-        <p className="about-project__text about-project__text_type_backend">
+        <p className="about-project__text about-project__text-backend">
           Back-end
         </p>
         <div className="about-project__stage about-project__stage_type_frontend">

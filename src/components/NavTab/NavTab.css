@@ -11,6 +11,7 @@
   line-height: 16px;
   text-align: center;
   font-weight: 500;
+  border-radius: 3px;
 }
 
 @media screen and (max-width: 768px) {

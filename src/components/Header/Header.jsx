@@ -21,12 +21,11 @@ function Header({ isLoggedIn }) {
   }
 
   return (
-    <>
-    <section  className={`header-wrapper ${
+    <header  className={`header-wrapper ${
          location.pathname === "/" ? "header-wrapper_color" : ""
     }`}>
       {!isLoggedIn ? (
-        <header className="header">
+        <section className="header">
            <Logo />
           <div className="header__container">
             <Link to="/signup" className="header__button">
@@ -36,9 +35,9 @@ function Header({ isLoggedIn }) {
               Войти
             </Link>
           </div>
-        </header>
+        </section>
       ) : (
-        <header className="header">
+        <section className="header">
             <Logo />
           <div className="header__container header__container_movies">
             <NavLink to="/movies" className={setActive}>
@@ -56,10 +55,9 @@ function Header({ isLoggedIn }) {
             </button>
           </div>
           {isClicked ? <Navigation closeSide={closeSide} openSide={openSide}/> : ""}
-        </header>
+        </section>
       )}
-      </section>
-    </>
+      </header>
   )
 }
 

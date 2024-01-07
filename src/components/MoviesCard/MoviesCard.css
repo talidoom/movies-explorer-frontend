@@ -52,10 +52,10 @@
   max-width: 270px;
 }
 
-@media screen and (max-width: 720px) {
-  .movies-card{
+@media screen and (max-width: 768px) {
+  /* .movies-card{
     width: 339px;
-  }
+  } */
 
   .movies-card__image {
     width: 339px;
@@ -71,9 +71,9 @@
 }
 
 @media screen and (max-width: 440px) {
-  .movies-card {
+  /* .movies-card {
     max-width: 300px;
-  }
+  } */
 
   .movies-card__image {
     width: 300px;

@@ -9,7 +9,7 @@ function Profile({ isLoggedIn, openSideMenu }) {
       <section className='profile'>
         <h3 className='profile__title'>Привет, ____!</h3>
 
-        <form name='profile' className='profile__form'>
+        <form className='profile__form' name='profile'>
 
           <fieldset className='profile__form-field'>
             <div className='profile__input-container'>
