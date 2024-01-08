@@ -1,0 +1,8 @@
+.App {
+  background-color: #202020;
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  min-width: 320px;
+  min-height: 100vh;
+}
