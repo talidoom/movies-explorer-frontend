@@ -7,7 +7,7 @@ function Profile({ isLoggedIn, openSideMenu }) {
     <>
       <Header isLoggedIn={isLoggedIn} openSideMenu={openSideMenu} />
       <section className='profile'>
-        <h3 className='profile__title'>Привет, ____!</h3>
+        <h1 className='profile__title'>Привет, ____!</h1>
 
         <form className='profile__form' name='profile'>
 

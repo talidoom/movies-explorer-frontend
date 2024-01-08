@@ -13,14 +13,14 @@
   flex-direction: column;
 }
 
-.tabout-me__title {
+.about-me__title {
   font-size: 50px;
   line-height: 58px;
   margin: 0;
   letter-spacing: -0.04em;
 }
 
-.tabout-me__info {
+.about-me__info {
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -62,12 +62,12 @@
     padding: 90px 50px;
   }
 
-  .tabout-me__title {
+  .about-me__title {
     font-size: 40px;
     line-height: 40px;
   }
 
-  .tabout-me__info {
+  .about-me__info {
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -102,7 +102,7 @@
     margin-top: 40px;
   }
 
-  .tabout-me__info {
+  .about-me__info {
     margin: 20px 0 20px;
   }
 
@@ -121,7 +121,7 @@
     padding: 90px 14px 70px;
   }
 
-  .tabout-me__title {
+  .about-me__title {
     font-size: 30px;
     line-height: 40px;
   }
@@ -131,7 +131,7 @@
     margin-top: 39px;
   }
 
-  .tabout-me__info {
+  .about-me__info {
     font-size: 11px;
     line-height: 16px;
     margin-top: 18px;

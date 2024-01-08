@@ -6,7 +6,7 @@ const Button = ({ text, type, onClick }) => {
     <>
       {type === 'account' ? (
         <Link
-          className='button button_type_account'
+          className='button button_type-account'
           to='/profile'
         >
           {text}
@@ -16,16 +16,16 @@ const Button = ({ text, type, onClick }) => {
       <button
           onClick={onClick}
           className={`button
-      ${type === 'form-login' && 'button_type_login'}
-      ${type === 'header-login' && 'button_type_header-login'}
-      ${type === 'form-register' && 'button_type_register'}
-      ${type === 'search' && 'button_type_search'}
-      ${type === 'more' && 'button_type_more'}
-      ${type === 'profile-edit' && 'button_type_profile-edit'}
-      ${type === 'profile-logout' && 'button_type_logout'}
-      ${type === 'movies-like' && 'button_type_movies-like'}
-      ${type === 'movies-delete' && 'button_type_movie-delete'}
-      ${type === 'close-menu' && 'button_type_close'}
+      ${type === 'form-login' && 'button_type-login'}
+      ${type === 'header-login' && 'button_type-header-login'}
+      ${type === 'form-register' && 'button_type-register'}
+      ${type === 'search' && 'button_type-search'}
+      ${type === 'more' && 'button_type-more'}
+      ${type === 'profile-edit' && 'button_type-profile'}
+      ${type === 'profile-logout' && 'button_type-logout'}
+      ${type === 'movies-like' && 'button_movies-like'}
+      ${type === 'movies-delete' && 'button_movie-delete'}
+      ${type === 'close-menu' && 'button_type-close'}
       `}
         >
           {text}

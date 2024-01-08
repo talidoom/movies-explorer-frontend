@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <section className='login'>
       <Logo />
-      <h3 className='login__title'>Рады видеть!</h3>
+      <h1 className='login__title'>Рады видеть!</h1>
 
       <form name='login' className='login__form'>
         <fieldset className='login__form-field'>

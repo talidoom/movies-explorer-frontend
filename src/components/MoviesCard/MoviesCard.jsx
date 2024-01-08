@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 const MoviesCard = () => {
   const location = useLocation();
   return (
-    <div className='movies-card'>
+    <section className='movies-card'>
       <a
         className='movies-card__link'
         rel='noreferrer'
@@ -20,11 +20,11 @@ const MoviesCard = () => {
         />
       </a>
       <div className='movies-card__info'>
-        <div>
+        <div className='movies-card__wrapper'>
           <p className='movies-card__title'>
           33 слова о дизайне
           </p>
-        <div className='movies-card__time'>1ч 42м</div>
+          <div className='movies-card__time'>1ч 42м</div>
         </div>
         {location.pathname === '/movies' ? (
           <Button text={''} type={'movies-like'} />
@@ -32,7 +32,7 @@ const MoviesCard = () => {
           <Button text={''} type={'movies-delete'} />
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

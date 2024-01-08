@@ -10,7 +10,7 @@ function Header({ isLoggedIn }) {
   const location = useLocation();
   const [isClicked, setIsClicked] = React.useState(false)
 
-  const setActive = ({ isActive }) => isActive ? "header__button_active" : "header__button"
+  const setActive = ({ isActive }) => isActive ? "header__button header__button_active" : "header__button"
 
   function openSide() {
     setIsClicked(true)
@@ -39,7 +39,7 @@ function Header({ isLoggedIn }) {
       ) : (
         <section className="header">
             <Logo />
-          <div className="header__container header__container_movies">
+          <div className="header__container header__container-movies">
             <NavLink to="/movies" className={setActive}>
               Фильмы
             </NavLink>

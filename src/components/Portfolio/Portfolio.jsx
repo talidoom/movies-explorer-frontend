@@ -7,7 +7,7 @@ const Portfolio = () => {
       <ul className='portfolio__lists'>
         <li className='portfolio__list'>
           <a
-            className='portfolio__link hover-link'
+            className='portfolio__link'
             href='https://github.com/talidoom/how-to-learn'
             target='_blank'
             rel='noreferrer'
@@ -18,7 +18,7 @@ const Portfolio = () => {
         </li>
         <li className='portfolio__list'>
           <a
-            className='portfolio__link hover-link'
+            className='portfolio__link'
             href='https://github.com/talidoom/russian-travel'
             target='_blank'
             rel='noreferrer'
@@ -29,8 +29,8 @@ const Portfolio = () => {
         </li>
         <li className='portfolio__list'>
           <a
-            className='portfolio__link hover-link'
-            href='https://talidoom.students.nomoredomainsmonster.ru'
+            className='portfolio__link'
+            href='https://github.com/talidoom/react-mesto-api-full-gha'
             target='_blank'
             rel='noreferrer'
           >

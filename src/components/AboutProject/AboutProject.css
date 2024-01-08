@@ -62,7 +62,7 @@
   color: #000;
 }
 
-.about-project__stage_type_frontend {
+.about-project__stage-rontend {
   grid-area: stage-frontend;
   background-color: #303030;
   color: #fff;
@@ -82,7 +82,7 @@
   grid-area: timeline-text-backend;
 }
 
-.about-project__text_type_frontend {
+.about-project__text-frontend {
   grid-area: timeline-text-frontend;
 }
 

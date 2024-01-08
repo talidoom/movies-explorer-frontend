@@ -6,7 +6,7 @@ import Button from "../Button/Button"
 
 function Navigation({ closeSide }) {
   const setActive = ({ isActive }) =>
-    isActive ? "navigation__link_active" : "navigation__link"
+    isActive ? "navigation__link navigation__link_active" : "navigation__link"
 
   return (
     <div className="navigation__overlay">

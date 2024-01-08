@@ -16,7 +16,7 @@
   transform: translateX(0%);
 }
 
-.sidebar-menu__container {
+.navigation {
   width: 100%;
   height: 100%;
   display: flex;
@@ -39,7 +39,7 @@
 }
 
 @media screen and (max-width: 440px) {
-  .sidebar-menu__container {
+  .navigation {
     padding: 145px 0 41px;
   }
 }

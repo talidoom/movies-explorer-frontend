@@ -38,6 +38,10 @@
   transition: opacity 0.3s ease-in-out;
 }
 
+.portfolio__link:hover {
+  opacity: 0.7;
+}
+
 .portfolio__link-text {
   margin: 0;
   letter-spacing: -0.04em;

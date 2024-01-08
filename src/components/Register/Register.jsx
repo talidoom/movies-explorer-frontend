@@ -7,7 +7,7 @@ const Register = () => {
   return (
     <section className='register'>
       <Logo />
-      <h3 className='register__title'>Добро пожаловать!</h3>
+      <h1 className='register__title'>Добро пожаловать!</h1>
 
       <form name='register' className='register__form'>
 
