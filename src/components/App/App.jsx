@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -9,6 +9,8 @@ import Register from '../Register/Register';
 import Profile from '../Profile/Profile';
 import Sidebar from '../Sidebar/Sidebar';
 import NotFound from '../PageNotFound/NotFound';
+import mainApi from '../../utils/MainApi';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { useMediaQuery } from 'react-responsive';
 import { TABLET_WIDTH, MOBILE_WIDTH } from '../../utils/constants/constants';
 
@@ -16,11 +18,17 @@ import { CurrentContext } from '../../utils/context/currentcontext';
 import Preloader from "../Preloader/Preloader";
 
 const App = () => {
-  const [isLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isSide, setIsSide] = useState(false);
-
   const [currentUser, setCurrentUser] = useState({});
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
+  const [saveMovies, setSaveMovies] = useState([]);
+  const [trueMovies, setTrueMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
+
+  const [isShortMovie, setIsShortMovie] = useState(
+    JSON.parse(localStorage.getItem("checkboxState")) || false
+  );
 
   const tablet = useMediaQuery({ query: TABLET_WIDTH });
   const mobile = useMediaQuery({ query: MOBILE_WIDTH });
@@ -32,6 +40,59 @@ const App = () => {
       closeSide();
     }
   };
+
+  const checkToken = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      mainApi.currentToken = token;
+      mainApi
+        .checkToken(token)
+        .then((res) => {
+          if (!res.message) {
+            setIsLoaderVisible(true);
+            setCurrentUser(res);
+            setIsLoggedIn(true);
+            mainApi.getMovies().then((movies) => {
+              setSaveMovies(movies.reverse());
+            });
+          }
+        })
+        .catch((res) => {
+          console.log(res);
+          setIsLoggedIn(false);
+          localStorage.clear();
+          navigate("/signin");
+        })
+        .finally(() => {
+          setIsLoaderVisible(false);
+        });
+      if (localStorage.getItem("foundedMovies")) {
+        setTrueMovies(JSON.parse(localStorage.getItem("foundedMovies")) || "[]");
+      }
+    }
+  };
+
+  const handleLogin = () => {
+    checkToken();
+    setIsLoggedIn(true);
+    localStorage.setItem("loggedIn", true);
+    navigate("/movies");
+  };
+
+  const logOut = () => {
+    localStorage.clear();
+    setMovies([]);
+    setTrueMovies([]);
+    setIsLoggedIn(false);
+    navigate("/");
+  };
+
+  useEffect(() => {
+    checkToken();
+  }, []);
+
+  // _________________
+
 
   const openSide = () => {
     setIsSide(true);
@@ -58,23 +119,88 @@ const App = () => {
           element={<Main isLoggedIn={isLoggedIn} openSide={openSide} />}
         />
         <Route
+            path="/signup"
+            element={
+              isLoggedIn ? (
+                <Navigate to="/" />
+              ) : (
+                <Register
+                  handleLogin={handleLogin}
+                  isLoaderVisible={isLoaderVisible}
+                  setIsLoaderVisible={setIsLoaderVisible}
+                />
+              )
+            }
+          />
+        <Route
+            path="/signin"
+            element={
+              isLoggedIn ? (
+                <Navigate to="/" />
+              ) : (
+                <Login
+                  handleLogin={handleLogin}
+                  isLoaderVisible={isLoaderVisible}
+                  setIsLoaderVisible={setIsLoaderVisible}
+                />
+              )
+            }
+          />
+          <Route
           path='/movies'
           element={
-            <Movies isLoggedIn={isLoggedIn} openSide={openSide} />
+            <ProtectedRoute
+                element={Movies}
+                isLoggedIn={isLoggedIn}
+                openSide={openSide}
+                isLoaderVisible={isLoaderVisible}
+                movies={movies}
+                saveMovies={saveMovies}
+                setSaveMovies={setSaveMovies}
+                setMovies={setMovies}
+                trueMovies={trueMovies}
+                setTrueMovies={setTrueMovies}
+                isShortMovie={isShortMovie}
+                setIsShortMovie={setIsShortMovie}
+                setIsLoaderVisible={setIsLoaderVisible}
+                mobile={mobile}
+                tablet={tablet}
+              />
+            // <Movies isLoggedIn={isLoggedIn} openSide={openSide} />
           }
         />
         <Route
           path='/saved-movies'
           element={
-            <SavedMovies isLoggedIn={isLoggedIn} openSide={openSide} />
+            <ProtectedRoute
+                element={SavedMovies}
+                isLoggedIn={isLoggedIn}
+                openSide={openSide}
+                saveMovies={saveMovies}
+                setSaveMovies={setSaveMovies}
+                isShortMovie={isShortMovie}
+                setIsShortMovie={setIsShortMovie}
+                trueMovies={trueMovies}
+                setIsLoaderVisible={setIsLoaderVisible}
+              />
+            // <SavedMovies isLoggedIn={isLoggedIn} openSide={openSide} />
           }
         />
-        <Route path='/signin' element={<Login />} />
-        <Route path='/signup' element={<Register />} />
+        {/* <Route path='/signin' element={<Login />} /> */}
+        {/* <Route path='/signup' element={<Register />} /> */}
         <Route
           path='/profile'
           element={
-            <Profile isLoggedIn={isLoggedIn} openSide={openSide} />
+            <ProtectedRoute
+                element={Profile}
+                isLoggedIn={isLoggedIn}
+                openSide={openSide}
+                logOut={logOut}
+                setCurrentUser={setCurrentUser}
+                setIsLoaderVisible={setIsLoaderVisible}
+                isLoaderVisible={isLoaderVisible}
+              />
+            // <Profile isLoggedIn={isLoggedIn} openSide={openSide} />
           }
         />
         <Route path='*' element={<NotFound />} />

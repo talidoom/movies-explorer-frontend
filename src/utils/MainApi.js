@@ -6,7 +6,7 @@ class MainApi {
 
   _getData(res) {
     if (!res.ok) {
-      return Promise.reject(`Что-то пошло не так, ошибка: ${res.status}`);
+      return Promise.reject(`Ошибка: ${res.status}`);
     }
     return res.json();
   }
