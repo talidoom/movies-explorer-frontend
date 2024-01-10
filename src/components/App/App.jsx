@@ -1,6 +1,6 @@
 import './App.css';
 import { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -9,10 +9,23 @@ import Register from '../Register/Register';
 import Profile from '../Profile/Profile';
 import Sidebar from '../Sidebar/Sidebar';
 import NotFound from '../PageNotFound/NotFound';
+import { useMediaQuery } from 'react-responsive';
+import { TABLET_WIDTH, MOBILE_WIDTH } from '../../utils/constants/constants';
+
+import { CurrentContext } from '../../utils/context/currentcontext';
+import Preloader from "../Preloader/Preloader";
 
 const App = () => {
   const [isLoggedIn] = useState(true);
   const [isSide, setIsSide] = useState(false);
+
+  const [currentUser, setCurrentUser] = useState({});
+  const [isLoaderVisible, setIsLoaderVisible] = useState(false);
+
+  const tablet = useMediaQuery({ query: TABLET_WIDTH });
+  const mobile = useMediaQuery({ query: MOBILE_WIDTH });
+
+  const navigate = useNavigate();
 
   const handleEscClick = (evt) => {
     if (evt.key === 'Escape') {
@@ -31,7 +44,9 @@ const App = () => {
   };
 
   return (
+    <CurrentContext.Provider value={currentUser}>
     <section className='app'>
+    <Preloader isLoaderVisible={isLoaderVisible} />
       <Sidebar
         isLoggedIn={isLoggedIn}
         isSide={isSide}
@@ -65,6 +80,7 @@ const App = () => {
         <Route path='*' element={<NotFound />} />
       </Routes>
     </section>
+    </CurrentContext.Provider>
   );
 };
 

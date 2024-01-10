@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Button from '../Button/Button';
 
-const MoviesCardList = () => {
+const MoviesCardList = ({ cards }) => {
   const location = useLocation();
 
   return (
