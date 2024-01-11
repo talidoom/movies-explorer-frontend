@@ -35,12 +35,6 @@ const App = () => {
 
   const navigate = useNavigate();
 
-  const handleEscClick = (evt) => {
-    if (evt.key === 'Escape') {
-      closeSide();
-    }
-  };
-
   const checkToken = () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -93,6 +87,11 @@ const App = () => {
 
   // _________________
 
+  const handleEscClick = (evt) => {
+    if (evt.key === 'Escape') {
+      closeSide();
+    }
+  };
 
   const openSide = () => {
     setIsSide(true);

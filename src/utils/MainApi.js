@@ -32,7 +32,7 @@ class MainApi {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ password, email }),
-    })
+    }) 
       .then(this._getData)
       .then((data) => {
         if (data) {

@@ -5,7 +5,7 @@ class MoviesApi {
     this.currentToken = "";
   }
 
-  getData(res) {
+  _getData(res) {
     if (!res.ok) {
       return Promise.reject(`Ошибка: ${res.status}`);
     }
@@ -18,7 +18,7 @@ class MoviesApi {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then(this.getData);
+    }).then(this._getData);
   }
 }
 

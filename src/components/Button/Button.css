@@ -17,6 +17,7 @@
 .button_disabled {
   pointer-events: none;
   opacity: 0.3;
+  cursor: none;
 }
 
 .button_type-login {
