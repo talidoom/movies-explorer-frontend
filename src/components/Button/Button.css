@@ -14,6 +14,11 @@
   opacity: 0.8;
 }
 
+.button_disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
 .button_type-login {
   width: 100%;
   font-weight: 500;
