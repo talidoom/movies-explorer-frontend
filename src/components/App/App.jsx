@@ -106,7 +106,7 @@ const App = () => {
   return (
     <CurrentContext.Provider value={currentUser}>
     <section className='app'>
-    {/* <Preloader isLoaderVisible={isLoaderVisible} /> */}
+    <Preloader isLoaderVisible={isLoaderVisible} />
       <Sidebar
         isLoggedIn={isLoggedIn}
         closeSide={closeSide}
