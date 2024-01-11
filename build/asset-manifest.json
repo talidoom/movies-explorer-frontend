@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4fb3d226.css",
+    "main.js": "/static/js/main.b2c4ec38.js",
+    "static/js/787.5ac42188.chunk.js": "/static/js/787.5ac42188.chunk.js",
+    "static/media/Inter-Medium.woff": "/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Black.woff": "/static/media/Inter-Black.c6938660eec019fefd68.woff",
+    "static/media/Inter-Regular.woff": "/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/photo-author.png": "/static/media/photo-author.03db96bf13ba77128bc9.png",
+    "static/media/Inter-Medium.woff2": "/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Black.woff2": "/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2": "/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/promo-img.png": "/static/media/promo-img.6a911d23b77ac06cf84c.png",
+    "static/media/33-slova-o-dizaine.png": "/static/media/33-slova-o-dizaine.79c5221b5bd80aff4d14.png",
+    "static/media/account-svg.svg": "/static/media/account-svg.79a2b408697b75faf45d7b0d7f9b2be5.svg",
+    "static/media/like.svg": "/static/media/like.cee536101fa367413546.svg",
+    "static/media/like_active.svg": "/static/media/like_active.1f023d2c91ddfbbc1c27.svg",
+    "static/media/logo-header.svg": "/static/media/logo-header.f6cab7bf9c223562857b2e4c294b9813.svg",
+    "index.html": "/index.html",
+    "static/media/delete-button.svg": "/static/media/delete-button.4d607aa795df35b22503.svg",
+    "static/media/search-button.svg": "/static/media/search-button.9e05fd03a882a51f379e.svg",
+    "static/media/close-button.svg": "/static/media/close-button.47a9344c64aa39423eaf.svg",
+    "static/media/burger-button.svg": "/static/media/burger-button.b71b3a967cc653a5be4fac8f2a1bd897.svg",
+    "main.4fb3d226.css.map": "/static/css/main.4fb3d226.css.map",
+    "main.b2c4ec38.js.map": "/static/js/main.b2c4ec38.js.map",
+    "787.5ac42188.chunk.js.map": "/static/js/787.5ac42188.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4fb3d226.css",
+    "static/js/main.b2c4ec38.js"
+  ]
+}
