@@ -18,6 +18,7 @@
   pointer-events: none;
   opacity: 0.3;
   cursor: none;
+  background-color: #424242;
 }
 
 .button_type-login {
