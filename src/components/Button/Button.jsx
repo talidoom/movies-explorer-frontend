@@ -23,8 +23,8 @@ const Button = ({ text, type, onClick, closeSide, buttonType, secondClass }) => 
       ${type === 'form-register' && `button_type-register ${secondClass}`}
       ${type === 'search' && 'button_type-search'}
       ${type === 'more' && 'button_type-more'}
-      ${type === 'profile-edit' && 'button_type-profile'}
-      ${type === 'profile-logout' && 'button_type-logout'}
+      ${type === 'profile-edit' && `button_type-profile ${secondClass}`}
+      ${type === 'profile-logout' && `button_type-logout ${secondClass}`}
       ${type === 'movies-like' && 'button_movies-like'}
       ${type === 'movies-delete' && 'button_movie-delete'}
       ${type === 'close-menu' && 'button_type-close'}

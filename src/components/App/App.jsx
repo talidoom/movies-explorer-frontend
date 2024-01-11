@@ -109,7 +109,6 @@ const App = () => {
     <Preloader isLoaderVisible={isLoaderVisible} />
       <Sidebar
         isLoggedIn={isLoggedIn}
-        isSide={isSide}
         closeSide={closeSide}
       />
       <Routes>

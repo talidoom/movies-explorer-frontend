@@ -2,7 +2,7 @@ import './Sidebar.css';
 import Navigation from '../Navigation/Navigation';
 import Button from '../Button/Button';
 
-function Sidebar({ isSide, closeSide }) {
+function Sidebar({ closeSide }) {
   return (
     <section className='sidebar-menu'>
       <nav className='navigation'>
