@@ -18,17 +18,6 @@ const MoviesCardList = ({
   const location = useLocation();
   const currentUser = useContext(CurrentContext);
 
-  const [movie, setMovie] = useState([]);
-
-React.useEffect(()=> {
-  fetch('https://api.nomoreparties.co/beatfilm-movies')
-  .then((res) => res.json())
-  .then((arr) => {
-    setMovie(arr);
-    console.log(arr);
-  })
-},[])
-
   return (
     <>
       {location.pathname === '/movies' && (

@@ -25,7 +25,16 @@ const Movies = ({
     <>
       <Header isLoggedIn={isLoggedIn} openSide={openSide} />
       <section className='movies'>
-        <SearchForm />
+        <SearchForm
+          isLoaderVisible={isLoaderVisible}
+          movies={movies}
+          setMovies={setMovies}
+          setIsLoaderVisible={setIsLoaderVisible}
+          setTrueMovies={setTrueMovies}
+          isShortMovie={isShortMovie}
+          setIsShortMovie={setIsShortMovie}
+          location={'all-movies'}
+        />
         <MoviesCardList
           trueMovies={trueMovies}
           setIsLoaderVisible={setIsLoaderVisible}
