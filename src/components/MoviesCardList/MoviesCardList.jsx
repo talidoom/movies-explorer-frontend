@@ -25,6 +25,7 @@ React.useEffect(()=> {
   .then((res) => res.json())
   .then((arr) => {
     setMovie(arr);
+    console.log(arr);
   })
 },[])
 
@@ -32,10 +33,7 @@ React.useEffect(()=> {
     <>
       {location.pathname === '/movies' && (
         <ul className='movies-cardlist'>
-          {/* <MoviesCard/> */}
-          {movie.map((movie) => (
-            <MoviesCard key={movie.id} {...movie}/>
-          ))}
+          <MoviesCard/>
         </ul>
       )}
       {location.pathname === '/saved-movies' && (
