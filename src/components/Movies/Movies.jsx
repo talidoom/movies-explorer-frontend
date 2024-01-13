@@ -5,14 +5,35 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import React from 'react';
 
-const Movies = ({ isLoggedIn, isopenSide }) => {
+const Movies = ({
+  isLoggedIn,
+  openSide,
+  movies,
+  isLoaderVisible,
+  saveMovies,
+  setSaveMovies,
+  setMovies,
+  trueMovies,
+  setTrueMovies,
+  isShortMovie,
+  setIsShortMovie,
+  setIsLoaderVisible,
+  mobile,
+  tablet }) => {
 
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} isopenSide={isopenSide} />
+      <Header isLoggedIn={isLoggedIn} openSide={openSide} />
       <section className='movies'>
         <SearchForm />
         <MoviesCardList
+          trueMovies={trueMovies}
+          setIsLoaderVisible={setIsLoaderVisible}
+          saveMovies={saveMovies}
+          setSaveMovies={setSaveMovies}
+          isShortMovie={isShortMovie}
+          mobile={mobile}
+          tablet={tablet}
         />
       </section>
       <Footer />

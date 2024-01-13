@@ -6,15 +6,15 @@ import menu from "../../images/burger-button.svg";
 import Navigation from "../Navigation/Navigation";
 import Button from "../Button/Button";
 
-function Header({ isLoggedIn }) {
+function Header({ isLoggedIn, openSide }) {
   const location = useLocation();
   const [isClicked, setIsClicked] = React.useState(false)
 
   const setActive = ({ isActive }) => isActive ? "header__button header__button_active" : "header__button"
 
-  function openSide() {
-    setIsClicked(true)
-  }
+  // function openSide() {
+  //   setIsClicked(true)
+  // }
 
   function closeSide() {
     setIsClicked(false)

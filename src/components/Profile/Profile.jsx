@@ -88,7 +88,7 @@ function Profile({ isLoggedIn, openSide, logOut, setCurrentUser, setIsLoaderVisi
           </fieldset>
 
           <Button
-            secondClass={'button_disabled'}
+            secondClass={isDisabled && "button_disabled"}
             text={'Редактировать'}
             type={'profile-edit'}
             buttonType='submit'

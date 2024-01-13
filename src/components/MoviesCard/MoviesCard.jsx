@@ -3,8 +3,9 @@ import Button from '../Button/Button';
 import cover from '../../images/33-slova-o-dizaine.png';
 import { useLocation } from 'react-router-dom';
 
-const MoviesCard = () => {
+const MoviesCard = ({ movie }) => {
   const location = useLocation();
+
   return (
     <section className='movies-card'>
       <a
@@ -15,16 +16,18 @@ const MoviesCard = () => {
       >
         <img
           className='movies-card__image'
-          src={cover}
-          alt={'Обложка фильма - 33 слова о дизайне'}
+          src={movie.image.url}
+          alt={`Обложка фильма "${movie.nameRU}"`}
         />
       </a>
       <div className='movies-card__info'>
         <div className='movies-card__wrapper'>
           <p className='movies-card__title'>
-          33 слова о дизайне
+          {movie.nameRU}
           </p>
-          <div className='movies-card__time'>1ч 42м</div>
+          <div className='movies-card__time'>
+            {`${Math.floor(movie.duration / 60)}ч ${movie.duration % 60}м`}
+        </div>
         </div>
         {location.pathname === '/movies' ? (
           <Button text={''} type={'movies-like'} />
