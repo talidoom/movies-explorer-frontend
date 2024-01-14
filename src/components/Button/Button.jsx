@@ -25,7 +25,7 @@ const Button = ({ text, type, onClick, closeSide, buttonType, secondClass }) => 
       ${type === 'more' && 'button_type-more'}
       ${type === 'profile-edit' && `button_type-profile ${secondClass}`}
       ${type === 'profile-logout' && `button_type-logout ${secondClass}`}
-      ${type === 'movies-like' && 'button_movies-like'}
+      ${type === 'movies-like' && `button_movies-like ${secondClass}`}
       ${type === 'movies-delete' && 'button_movie-delete'}
       ${type === 'close-menu' && 'button_type-close'}
       `}
