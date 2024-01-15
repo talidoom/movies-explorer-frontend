@@ -83,7 +83,7 @@ const MoviesCard = ({
         className='movies-card__link'
         rel='noreferrer'
         target='_blank'
-        href='https://www.kinopoisk.ru/film/1302273/'
+        href={movie.trailerLink}
       >
         <img
           className='movies-card__image'
