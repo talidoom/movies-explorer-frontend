@@ -2,9 +2,9 @@ import './Sidebar.css';
 import Navigation from '../Navigation/Navigation';
 import Button from '../Button/Button';
 
-function Sidebar({ closeSide }) {
+function Sidebar({ closeSide, isSide }) {
   return (
-    <section className='sidebar-menu'>
+    <section className={`sidebar-menu ${isSide && "sidebar-menu_opened"}`}>
       <nav className='navigation'>
         <Button type={'close-menu'} onClick={closeSide} />
         <Navigation navStyle={'sidebar-menu'} closeSide={closeSide} />

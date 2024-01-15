@@ -110,6 +110,7 @@ const App = () => {
       <Sidebar
         isLoggedIn={isLoggedIn}
         closeSide={closeSide}
+        isSide={isSide}
       />
       <Routes>
         <Route
