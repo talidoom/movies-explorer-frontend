@@ -12,7 +12,7 @@ function Navigation({ closeSide }) {
     <div className="navigation__overlay">
       <div className="navigation__overlay-container"></div>
       <div className="navigation__menu">
-        <Button type={'close-menu'} onClick={closeSide} />
+        {/* <Button type={'close-menu'} onClick={closeSide} /> */}
         <nav className="navigation__links">
           <NavLink to="/" className={setActive}>
             Главная
@@ -28,13 +28,13 @@ function Navigation({ closeSide }) {
             Сохранённые фильмы
           </NavLink>
         </nav>
-        <Link
+        {/* <Link
           to="/profile"
           className="navigation__account-button"
           onClick={closeSide}
         >
           <img src={account} alt="аккаунт" />
-        </Link>
+        </Link> */}
       </div>
     </div>
   )
