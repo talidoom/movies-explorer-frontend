@@ -6,13 +6,13 @@ function Sidebar({ closeSide, isSide }) {
   return (
     <section className={`sidebar-menu ${isSide && "sidebar-menu_opened"}`}>
       <nav className='navigation'>
-        <Button type={'close-menu'} onClick={closeSide} />
+        {/* <Button type={'close-menu'} onClick={closeSide} /> */}
         <Navigation navStyle={'sidebar-menu'} closeSide={closeSide} />
-        <Button
+        {/* <Button
           type={'account'}
           text={'Аккаунт'}
           closeSide={closeSide}
-        />
+        /> */}
       </nav>
     </section>
   );
