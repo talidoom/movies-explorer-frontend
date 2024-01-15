@@ -2,6 +2,7 @@ import './MoviesCard.css';
 import Button from '../Button/Button';
 // import cover from '../../images/33-slova-o-dizaine.png';
 import { useLocation } from 'react-router-dom';
+import mainApi from '../../utils/MainApi';
 
 const MoviesCard = ({
   setIsLoaderVisible,
@@ -13,6 +14,68 @@ const MoviesCard = ({
 
   const location = useLocation();
   const urlMove = 'https://api.nomoreparties.co'
+
+  const handleLike = () => {
+    setIsLoaderVisible(true);
+    mainApi
+      .createMovie(
+        movie.country,
+        movie.director,
+        movie.duration,
+        movie.year,
+        movie.description,
+        `https://api.nomoreparties.co${movie.image.url}`,
+        movie.trailerLink,
+        movie.nameRU,
+        movie.nameEN,
+        `https://api.nomoreparties.co${movie.image.url}`,
+        movie.id
+      )
+      .then((res) => {
+        setSaveMovies([res, ...saveMovies]);
+      })
+      .catch((err) => {
+        console.log(`Ошибка ${err}`);
+      })
+      .finally(() => {
+        setIsLoaderVisible(false);
+      });
+  };
+
+  const handleDislike = () => {
+    setIsLoaderVisible(true);
+    const saveMovie = saveMovies?.find((item) => item.movieId === movie.id);
+    mainApi
+      .deleteMovie(saveMovie._id)
+      .then(() => {
+        setSaveMovies((newMovies) =>
+          newMovies.filter((m) => m.movieId !== movie.id)
+        );
+      })
+      .catch((err) => {
+        console.log(`Ошибка ${err}`);
+      })
+      .finally(() => {
+        setIsLoaderVisible(false);
+      });
+  };
+
+  const handleDelete = () => {
+    setIsLoaderVisible(true);
+    mainApi
+      .deleteMovie(movie._id)
+      .then(() => {
+        setSaveMovies((newMovies) =>
+          newMovies.filter((m) => m._id !== movie._id)
+        );
+      })
+      .catch((err) => {
+        console.log(`Ошибка ${err}`);
+      })
+      .finally(() => {
+        setIsLoaderVisible(false);
+      });
+  };
 
   return (
     <section className='movies-card'>
@@ -44,9 +107,14 @@ const MoviesCard = ({
             text={''}
             type={'movies-like'}
             secondClass={ saved ? "button_movies-like-active" : "" }
+            onClick={saved ? handleDislike : handleLike}
           />
         ) : (
-          <Button text={''} type={'movies-delete'} />
+          <Button
+            text={''}
+            type={'movies-delete'}
+            onClick={handleDelete}
+          />
         )}
       </div>
     </section>
