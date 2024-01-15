@@ -106,7 +106,7 @@ const App = () => {
   return (
     <CurrentContext.Provider value={currentUser}>
     <section className='app'>
-    <Preloader isLoaderVisible={isLoaderVisible} />
+      <Preloader isLoaderVisible={isLoaderVisible} />
       <Sidebar
         isLoggedIn={isLoggedIn}
         closeSide={closeSide}
@@ -117,92 +117,94 @@ const App = () => {
           path='/'
           element={<Main isLoggedIn={isLoggedIn} openSide={openSide} />}
         />
+
         <Route
-            path="/signup"
-            element={
-              isLoggedIn ? (
-                <Navigate to="/" />
-              ) : (
-                <Register
-                  handleLogin={handleLogin}
-                  isLoaderVisible={isLoaderVisible}
-                  setIsLoaderVisible={setIsLoaderVisible}
-                />
-              )
-            }
-          />
-        <Route
-            path="/signin"
-            element={
-              isLoggedIn ? (
-                <Navigate to="/" />
-              ) : (
-                <Login
-                  handleLogin={handleLogin}
-                  isLoaderVisible={isLoaderVisible}
-                  setIsLoaderVisible={setIsLoaderVisible}
-                />
-              )
-            }
-          />
-          <Route
-          path='/movies'
+          path="/signin"
           element={
-            <ProtectedRoute
-                element={Movies}
-                isLoggedIn={isLoggedIn}
-                openSide={openSide}
+            isLoggedIn ? (
+              <Navigate to="/" />
+            ) : (
+              <Login
+                handleLogin={handleLogin}
                 isLoaderVisible={isLoaderVisible}
-                movies={movies}
-                saveMovies={saveMovies}
-                setSaveMovies={setSaveMovies}
-                setMovies={setMovies}
-                trueMovies={trueMovies}
-                setTrueMovies={setTrueMovies}
-                isShortMovie={isShortMovie}
-                setIsShortMovie={setIsShortMovie}
                 setIsLoaderVisible={setIsLoaderVisible}
-                mobile={mobile}
-                tablet={tablet}
               />
-            // <Movies isLoggedIn={isLoggedIn} openSide={openSide} />
+            )
           }
         />
         <Route
-          path='/saved-movies'
+          path="/signup"
           element={
-            <ProtectedRoute
-                element={SavedMovies}
-                isLoggedIn={isLoggedIn}
-                openSide={openSide}
-                saveMovies={saveMovies}
-                setSaveMovies={setSaveMovies}
-                isShortMovie={isShortMovie}
-                setIsShortMovie={setIsShortMovie}
-                trueMovies={trueMovies}
+            isLoggedIn ? (
+              <Navigate to="/" />
+            ) : (
+              <Register
+                handleLogin={handleLogin}
+                isLoaderVisible={isLoaderVisible}
                 setIsLoaderVisible={setIsLoaderVisible}
               />
-            // <SavedMovies isLoggedIn={isLoggedIn} openSide={openSide} />
+            )
           }
         />
+
+        <Route
+        path='/movies'
+        element={
+          <ProtectedRoute
+              element={Movies}
+              isLoggedIn={isLoggedIn}
+              openSide={openSide}
+              isLoaderVisible={isLoaderVisible}
+              movies={movies}
+              saveMovies={saveMovies}
+              setSaveMovies={setSaveMovies}
+              setMovies={setMovies}
+              trueMovies={trueMovies}
+              setTrueMovies={setTrueMovies}
+              isShortMovie={isShortMovie}
+              setIsShortMovie={setIsShortMovie}
+              setIsLoaderVisible={setIsLoaderVisible}
+              mobile={mobile}
+              tablet={tablet}
+            />
+          // <Movies isLoggedIn={isLoggedIn} openSide={openSide} />
+        }
+      />
+      <Route
+        path='/saved-movies'
+        element={
+          <ProtectedRoute
+              element={SavedMovies}
+              isLoggedIn={isLoggedIn}
+              openSide={openSide}
+              saveMovies={saveMovies}
+              setSaveMovies={setSaveMovies}
+              isShortMovie={isShortMovie}
+              setIsShortMovie={setIsShortMovie}
+              trueMovies={trueMovies}
+              setIsLoaderVisible={setIsLoaderVisible}
+            />
+          // <SavedMovies isLoggedIn={isLoggedIn} openSide={openSide} />
+        }
+      />
         {/* <Route path='/signin' element={<Login />} /> */}
         {/* <Route path='/signup' element={<Register />} /> */}
-        <Route
-          path='/profile'
-          element={
-            <ProtectedRoute
-                element={Profile}
-                isLoggedIn={isLoggedIn}
-                openSide={openSide}
-                logOut={logOut}
-                setCurrentUser={setCurrentUser}
-                setIsLoaderVisible={setIsLoaderVisible}
-                isLoaderVisible={isLoaderVisible}
-              />
-            // <Profile isLoggedIn={isLoggedIn} openSide={openSide} />
-          }
-        />
-        <Route path='*' element={<NotFound />} />
+      <Route
+        path='/profile'
+        element={
+          <ProtectedRoute
+              element={Profile}
+              isLoggedIn={isLoggedIn}
+              openSide={openSide}
+              logOut={logOut}
+              setCurrentUser={setCurrentUser}
+              setIsLoaderVisible={setIsLoaderVisible}
+              isLoaderVisible={isLoaderVisible}
+            />
+          // <Profile isLoggedIn={isLoggedIn} openSide={openSide} />
+        }
+      />
+      <Route path='*' element={<NotFound />} />
       </Routes>
     </section>
     </CurrentContext.Provider>
