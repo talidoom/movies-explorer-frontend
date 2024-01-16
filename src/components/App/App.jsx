@@ -18,7 +18,7 @@ import { CurrentContext } from '../../utils/context/currentcontext';
 import Preloader from "../Preloader/Preloader";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSide, setIsSide] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
