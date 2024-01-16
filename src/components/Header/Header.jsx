@@ -24,7 +24,7 @@ function Header({ isLoggedIn, openSide }) {
     <header  className={`header-wrapper ${
          location.pathname === "/" ? "header-wrapper_color" : ""
     }`}>
-      {!isLoggedIn ? (
+      {/* {!isLoggedIn ? (
         <section className="header">
            <Logo />
           <div className="header__container">
@@ -49,12 +49,46 @@ function Header({ isLoggedIn, openSide }) {
             </NavLink>
           </div>
           <div className="header__container">
-            {/* <Button type={'account'} onClick={openSide} alt="кнопка аккаунта" /> */}
+            <Button type={'account'} onClick={openSide} alt="кнопка аккаунта" />
             <button className="header__burger-button" onClick={openSide}>
               <img src={menu} alt="кнопка меню" />
             </button>
           </div>
           {isClicked ? <Navigation closeSide={closeSide} openSide={openSide}/> : ""}
+        </section>
+      )} */}
+
+{isLoggedIn ? (
+        <section className="header">
+            <Logo />
+          <div className="header__container header__container-movies">
+            <NavLink to="/movies" className={setActive}>
+              Фильмы
+            </NavLink>
+
+            <NavLink to="/saved-movies" className={setActive}>
+              Сохранённые фильмы
+            </NavLink>
+          </div>
+          <div className="header__container">
+            <Button type={'account'} onClick={openSide} alt="кнопка аккаунта" />
+            <button className="header__burger-button" onClick={openSide}>
+              <img src={menu} alt="кнопка меню" />
+            </button>
+          </div>
+          {isClicked ? <Navigation closeSide={closeSide} openSide={openSide}/> : ""}
+        </section>
+      ) : (
+        <section className="header">
+           <Logo />
+          <div className="header__container">
+            <Link to="/signup" className="header__button">
+              Регистрация
+            </Link>
+            <Link to="/signin" className="header__button header__button-green">
+              Войти
+            </Link>
+          </div>
         </section>
       )}
       </header>
