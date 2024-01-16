@@ -15,13 +15,13 @@ class MainApi {
     this.#currentToken = value;
   }
 
-  register = (name, email, password) => {
+  register = (email, password, name) => {
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ email, password, name }),
     }).then(this._getData);
   };
 
@@ -32,7 +32,7 @@ class MainApi {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ password, email }),
-    }) 
+    })
       .then(this._getData)
       .then((data) => {
         if (data) {

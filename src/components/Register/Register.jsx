@@ -14,12 +14,12 @@ const Register = ({ handleLogin, isLoaderVisible, setIsLoaderVisible }) => {
     reset,
   } = useForm({ mode: "onChange" });
 
-  const onSumbit = (data) => {
+  const onSumbit = (dataForm) => {
     setIsLoaderVisible(true);
     mainApi
-      .register(data.firstName, data.email, data.password)
+      .register(dataForm.firstName, dataForm.email, dataForm.password)
       .then(() => {
-        mainApi.login(data.password, data.email)
+        mainApi.login(dataForm.password, dataForm.email)
         .then((data) => {
           if (data.token) {
             localStorage.setItem("token", data.token);
