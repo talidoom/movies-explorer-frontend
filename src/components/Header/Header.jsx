@@ -19,6 +19,7 @@ function Header({ isLoggedIn, openSide }) {
   function closeSide() {
     setIsClicked(false)
   }
+  console.log(isLoggedIn);
 
   return (
     <header  className={`header-wrapper ${

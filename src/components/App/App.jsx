@@ -74,10 +74,10 @@ const App = () => {
   };
 
   const logOut = () => {
-    localStorage.clear();
     setMovies([]);
     setTrueMovies([]);
     setIsLoggedIn(false);
+    localStorage.clear();
     navigate("/");
   };
 
