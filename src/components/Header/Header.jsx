@@ -49,7 +49,7 @@ function Header({ isLoggedIn, openSide }) {
             </NavLink>
           </div>
           <div className="header__container">
-            <Button type={'account'} onClick={openSide} alt="кнопка аккаунта" />
+            {/* <Button type={'account'} onClick={openSide} alt="кнопка аккаунта" /> */}
             <button className="header__burger-button" onClick={openSide}>
               <img src={menu} alt="кнопка меню" />
             </button>
