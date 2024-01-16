@@ -24,11 +24,11 @@ const MoviesCard = ({
         movie.duration,
         movie.year,
         movie.description,
-        `https://api.nomoreparties.co${movie.image.url}`,
+        `${urlMove}${movie.image.url}`,
         movie.trailerLink,
         movie.nameRU,
         movie.nameEN,
-        `https://api.nomoreparties.co${movie.image.url}`,
+        `${urlMove}${movie.image.url}`,
         movie.id
       )
       .then((res) => {

@@ -81,6 +81,7 @@ const Login = ({ isLoaderVisible, handleLogin, setIsLoaderVisible}) => {
           type={'form-login'}
           buttonType='submit'
           secondClass={!isValid && "button_disabled"}
+          disabled={isLoaderVisible}
         />
       </form>
 
