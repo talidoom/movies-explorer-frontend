@@ -132,7 +132,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: "https://api.movies-talidoom.nomoredomainsmonster.ru",
+  baseUrl: 'https://api.movies-talidoom.nomoredomainsmonster.ru',
 });
 
 export default mainApi;
