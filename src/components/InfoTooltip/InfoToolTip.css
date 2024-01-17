@@ -29,22 +29,19 @@
   box-sizing: border-box;
   border-radius: 10px;
   margin: 0 30px;
-  padding: 40px;
-  background-color: white;
+  padding: 40px 30px 30px;
+  background-color: #2F2F2F;
   position: relative;
-}
-
-.infotooltip__image {
-  width: 120px;
-  height: 120px;
 }
 
 .infotooltip__title {
   width: 100%;
+  font-weight: 400;
   font-size: 24px;
-  margin: 50px 0 0 0;
+  line-height: 28px;
+  margin: 10px 0 0 0;
   text-align: center;
-  color: #000;
+  color: #fff;
 }
 
 @media screen and (max-width: 414px) {

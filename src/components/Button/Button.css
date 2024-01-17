@@ -36,8 +36,8 @@
 .button_type_close-popup {
   width: 22px;
   height: 22px;
-  color: #000;
-  background-image: url('../../images/close-popup.svg');
+  color: #fff;
+  background-image: url('../../images/close-button.svg');
   background-color: inherit;
   background-repeat: no-repeat;
   background-position: center;
