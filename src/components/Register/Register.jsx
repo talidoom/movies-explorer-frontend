@@ -4,9 +4,9 @@ import Logo from '../Logo/Logo';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import mainApi from '../../utils/MainApi';
-import { patternName, patternEmail} from '../../utils/constants/constants';
+import { patternEmail} from '../../utils/constants/constants';
 
-const Register = ({ handleLogin, isLoaderVisible, setIsLoaderVisible }) => {
+const Register = ({ handleLogin, isLoaderVisible, setIsLoaderVisible, setTooltipState }) => {
   const {
     register,
     formState: { errors, isValid },
@@ -14,22 +14,31 @@ const Register = ({ handleLogin, isLoaderVisible, setIsLoaderVisible }) => {
     reset,
   } = useForm({ mode: "onChange" });
 
-  const onSumbit = (dataForm) => {
+  const onSumbit = (formdata) => {
     setIsLoaderVisible(true);
     mainApi
-      .register(dataForm.firstName, dataForm.email, dataForm.password)
+      .register(formdata.firstName, formdata.email, formdata.password)
       .then(() => {
-        mainApi.login(dataForm.password, dataForm.email)
-        .then((data) => {
+        mainApi.login(formdata.password, formdata.email).then((data) => {
           if (data.token) {
             localStorage.setItem("token", data.token);
             handleLogin();
+            setTooltipState({
+              isVisible: true,
+              isSuccessful: true,
+              text: "Вы успешно зарегистрировались!",
+            });
             reset();
           }
         });
       })
       .catch((err) => {
-        console.log(`Ошибка ${err}`);
+        console.log(`Err ${err}`);
+        setTooltipState({
+          isVisible: true,
+          isSuccessful: false,
+          text: "При регистрации указан email, который уже существует на сервере!",
+        });
       })
       .finally(() => {
         setIsLoaderVisible(false);
@@ -52,12 +61,11 @@ const Register = ({ handleLogin, isLoaderVisible, setIsLoaderVisible }) => {
             <label className='register__label'>Имя</label>
             <input
               className='register__input'
-              id='name-input'
+              id='name'
               type='text'
               name='name'
               disabled={isLoaderVisible}
               placeholder='Введите имя'
-              minLength={2}
               {...register("firstName", {
                 required: 'Поле обязательно для заполнения',
                 minLength: {
@@ -68,30 +76,43 @@ const Register = ({ handleLogin, isLoaderVisible, setIsLoaderVisible }) => {
                   value: 30,
                   message: 'Максимальная длина 30 символов',
                 },
-                pattern: patternName,
               })}
             />
           </div>
+          <div className="register__errors-container">
+            {errors?.firstName && (
+              <p className="register__error-message">
+                {errors?.firstName?.message || "Недопустимые символы"}
+              </p>
+            )}
+          </div>
+
           <div className='register__input-container'>
             <label className='register__label'>E-mail</label>
             <input
               className='register__input'
               disabled={isLoaderVisible}
-              id='email-input'
+              id='email'
               type='email'
               name='email'
-              placeholder='Укажите email'
+              placeholder='Укажите e-mail'
               {...register("email", {
                 required: true,
                 pattern: patternEmail,
               })}
             />
           </div>
+          <div className="register__errors-container">
+            {errors?.email && (
+              <p className="register__error-message">Введён некорректный email</p>
+            )}
+          </div>
+
           <div className='register__input-container'>
             <label className='register__label'>Пароль</label>
             <input
               className='register__input'
-              id='password-input'
+              id='password'
               disabled={isLoaderVisible}
               type='password'
               name='password'
@@ -104,6 +125,13 @@ const Register = ({ handleLogin, isLoaderVisible, setIsLoaderVisible }) => {
                 },
               })}
             />
+          </div>
+          <div className="register__errors-container">
+            {errors?.password && (
+              <p className="register__error-message">
+                {errors?.password?.message || "Что-то пошло не так.."}
+              </p>
+            )}
           </div>
         </fieldset>
 

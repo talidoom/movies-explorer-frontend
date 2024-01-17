@@ -11,6 +11,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import NotFound from '../PageNotFound/NotFound';
 import mainApi from '../../utils/MainApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import { useMediaQuery } from 'react-responsive';
 import { TABLET_WIDTH, MOBILE_WIDTH } from '../../utils/constants/constants';
 
@@ -29,6 +30,12 @@ const App = () => {
   const [isShortMovie, setIsShortMovie] = useState(
     JSON.parse(localStorage.getItem("checkboxState")) || false
   );
+
+  const [tooltipState, setTooltipState] = useState({
+    isVisible: false,
+    isSuccessful: false,
+    text: "",
+  });
 
   const tablet = useMediaQuery({ query: TABLET_WIDTH });
   const mobile = useMediaQuery({ query: MOBILE_WIDTH });
@@ -107,6 +114,7 @@ const App = () => {
     <CurrentContext.Provider value={currentUser}>
     <section className='app'>
       <Preloader isLoaderVisible={isLoaderVisible} />
+      <InfoTooltip tooltipState={tooltipState} setTooltipState={setTooltipState} />
       <Sidebar
         isLoggedIn={isLoggedIn}
         closeSide={closeSide}
@@ -128,6 +136,7 @@ const App = () => {
                 handleLogin={handleLogin}
                 isLoaderVisible={isLoaderVisible}
                 setIsLoaderVisible={setIsLoaderVisible}
+                setTooltipState={setTooltipState}
               />
             )
           }
@@ -142,6 +151,7 @@ const App = () => {
                 handleLogin={handleLogin}
                 isLoaderVisible={isLoaderVisible}
                 setIsLoaderVisible={setIsLoaderVisible}
+                setTooltipState={setTooltipState}
               />
             )
           }
@@ -167,7 +177,6 @@ const App = () => {
               mobile={mobile}
               tablet={tablet}
             />
-          // <Movies isLoggedIn={isLoggedIn} openSide={openSide} />
         }
       />
       <Route
@@ -184,11 +193,8 @@ const App = () => {
               trueMovies={trueMovies}
               setIsLoaderVisible={setIsLoaderVisible}
             />
-          // <SavedMovies isLoggedIn={isLoggedIn} openSide={openSide} />
         }
       />
-        {/* <Route path='/signin' element={<Login />} /> */}
-        {/* <Route path='/signup' element={<Register />} /> */}
       <Route
         path='/profile'
         element={
@@ -200,8 +206,8 @@ const App = () => {
               setCurrentUser={setCurrentUser}
               setIsLoaderVisible={setIsLoaderVisible}
               isLoaderVisible={isLoaderVisible}
+              setTooltipState={setTooltipState}
             />
-          // <Profile isLoggedIn={isLoggedIn} openSide={openSide} />
         }
       />
       <Route path='*' element={<NotFound />} />

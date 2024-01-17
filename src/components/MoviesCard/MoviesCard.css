@@ -11,7 +11,8 @@
 
 .movies-card__image {
   width: 270px;
-  object-fit: contain;
+  height: 151px;
+  object-fit: cover;
   border-radius: 16px 16px 0 0;
 }
 
@@ -59,6 +60,7 @@
 
   .movies-card__image {
     width: 339px;
+    height: 190px;
   }
 
   .movies-card__title {
@@ -77,6 +79,7 @@
 
   .movies-card__image {
     width: 300px;
+    height: 168px;
   }
 
   .movies-card__title {

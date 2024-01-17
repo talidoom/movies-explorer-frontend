@@ -1,6 +1,5 @@
 import './MoviesCard.css';
 import Button from '../Button/Button';
-// import cover from '../../images/33-slova-o-dizaine.png';
 import { useLocation } from 'react-router-dom';
 import mainApi from '../../utils/MainApi';
 
@@ -61,7 +60,6 @@ const MoviesCard = ({
   };
 
   const handleDelete = () => {
-    setIsLoaderVisible(true);
     mainApi
       .deleteMovie(movie._id)
       .then(() => {
@@ -72,9 +70,6 @@ const MoviesCard = ({
       .catch((err) => {
         console.log(`Ошибка ${err}`);
       })
-      .finally(() => {
-        setIsLoaderVisible(false);
-      });
   };
 
   return (

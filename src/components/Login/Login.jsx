@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import mainApi from '../../utils/MainApi';
 import { patternEmail } from '../../utils/constants/constants';
 
-const Login = ({ isLoaderVisible, handleLogin, setIsLoaderVisible}) => {
+const Login = ({ isLoaderVisible, handleLogin, setIsLoaderVisible, setTooltipState}) => {
   const {
     register,
     formState: { errors, isValid },
@@ -19,12 +19,22 @@ const Login = ({ isLoaderVisible, handleLogin, setIsLoaderVisible}) => {
     mainApi
       .login(formdata.password, formdata.email)
       .then((data) => {
+        setTooltipState({
+          isVisible: true,
+          isSuccessful: true,
+          text: "Авторизация прошла успешно",
+        });
         localStorage.setItem("token", data.token);
         handleLogin();
         reset();
       })
       .catch((err) => {
         console.log(`Ошибка ${err}`);
+        setTooltipState({
+          isVisible: true,
+          isSuccessful: false,
+          text: "Неправильная почта или пароль",
+        });
       })
       .finally(() => {
         setIsLoaderVisible(false);
@@ -55,6 +65,11 @@ const Login = ({ isLoaderVisible, handleLogin, setIsLoaderVisible}) => {
               })}
             />
           </div>
+          <div className="login__errors-container">
+            {errors?.email && (
+              <p className="login__error-message">Введён некорректный email</p>
+            )}
+          </div>
 
           <div className='login__input-container'>
             <label className='login__label'>Пароль</label>
@@ -73,6 +88,13 @@ const Login = ({ isLoaderVisible, handleLogin, setIsLoaderVisible}) => {
                 },
               })}
             />
+          </div>
+          <div className="login__errors-container">
+            {errors?.password && (
+              <p className="login__error-message">
+                {errors?.password?.message || "Error"}
+              </p>
+            )}
           </div>
 
         </fieldset>

@@ -33,6 +33,20 @@
   padding: 13px 0 15px;
 }
 
+.button_type_close-popup {
+  width: 22px;
+  height: 22px;
+  color: #000;
+  background-image: url('../../images/close-popup.svg');
+  background-color: inherit;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
 .button_type-header-login {
   font-weight: 500;
   font-size: 12px;

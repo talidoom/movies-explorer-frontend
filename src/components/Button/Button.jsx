@@ -28,6 +28,7 @@ const Button = ({ text, type, onClick, closeSide, buttonType, secondClass }) => 
       ${type === 'movies-like' && `button_movies-like ${secondClass}`}
       ${type === 'movies-delete' && 'button_movie-delete'}
       ${type === 'close-menu' && 'button_type-close'}
+      ${type === "close-popup" && "button_type_close-popup"}
       `}
         >
           {text}

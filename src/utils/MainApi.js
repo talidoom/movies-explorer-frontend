@@ -5,23 +5,24 @@ class MainApi {
   }
 
   _getData(res) {
-    if (!res.ok) {
-      return Promise.reject(`Ошибка: ${res.status}`);
+    if (res.ok) {
+      return res.json();
     }
-    return res.json();
+    return Promise.reject(`Ошибка: ${res.status}`);
   }
+
   #currentToken = "";
   set currentToken(value) {
     this.#currentToken = value;
   }
 
-  register = (email, password, name) => {
+  register = (name, email, password) => {
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password, name }),
+      body: JSON.stringify({ name, email, password }),
     }).then(this._getData);
   };
 
@@ -132,7 +133,8 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: 'https://api.movies-talidoom.nomoredomainsmonster.ru',
+  // baseUrl: 'https://api.movies-talidoom.nomoredomainsmonster.ru',
+  baseUrl: 'http://localhost:3000',
 });
 
 export default mainApi;

@@ -7,7 +7,15 @@ import mainApi from '../../utils/MainApi';
 import { CurrentContext } from '../../utils/context/currentcontext';
 import { patternName, patternEmail } from '../../utils/constants/constants';
 
-function Profile({ isLoggedIn, openSide, logOut, setCurrentUser, setIsLoaderVisible, isLoaderVisible }) {
+function Profile({
+  isLoggedIn,
+  openSide,
+  logOut,
+  setCurrentUser,
+  setIsLoaderVisible,
+  isLoaderVisible,
+  setTooltipState }) {
+
   const currentUser = useContext(CurrentContext);
   const {
     register,
@@ -29,9 +37,19 @@ function Profile({ isLoggedIn, openSide, logOut, setCurrentUser, setIsLoaderVisi
       .setUserInfo(data.firstName, data.email)
       .then((res) => {
         setCurrentUser(res);
+        setTooltipState({
+          isVisible: true,
+          isSuccessful: true,
+          text: "Данные изменены",
+        });
       })
       .catch((err) => {
         console.log(`Ошибка ${err}`);
+        setTooltipState({
+          isVisible: true,
+          isSuccessful: false,
+          text: "Что-то пошло не так...",
+        });
       })
       .finally(() => {
         setIsLoaderVisible(false);
@@ -66,9 +84,15 @@ function Profile({ isLoggedIn, openSide, logOut, setCurrentUser, setIsLoaderVisi
                     value: 30,
                     message: 'Максимальная длина 30 символов',
                   },
-                  pattern: patternName,
                 })}
               />
+            </div>
+            <div className="profile__errors-container">
+              {errors?.firstName && (
+                <p className="profile__error-message">
+                  {errors?.firstName?.message}
+                </p>
+              )}
             </div>
             <div className='profile__input-container'>
               <label className='profile__label'>E-mail</label>
@@ -85,6 +109,11 @@ function Profile({ isLoggedIn, openSide, logOut, setCurrentUser, setIsLoaderVisi
                 })}
               />
             </div>
+            <div className="profile__errors-container">
+            {errors?.email && (
+              <p className="profile__error-message">Введён некорректный email</p>
+            )}
+          </div>
           </fieldset>
 
           <Button
