@@ -2,6 +2,7 @@ import './MoviesCard.css';
 import Button from '../Button/Button';
 import { useLocation } from 'react-router-dom';
 import mainApi from '../../utils/MainApi';
+import { urlMove } from '../../utils/urlApi';
 
 const MoviesCard = ({
   setIsLoaderVisible,
@@ -12,7 +13,6 @@ const MoviesCard = ({
 }) => {
 
   const location = useLocation();
-  const urlMove = 'https://api.nomoreparties.co'
 
   const handleLike = () => {
     setIsLoaderVisible(true);

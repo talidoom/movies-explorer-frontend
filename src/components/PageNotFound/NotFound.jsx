@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 
 const NotFound = () => {
   const navigate = useNavigate();
-  const handleBack = () => navigate(-1);
+  const handleBack = () => navigate(-2);
 
   return (
     <section className='not-found'>

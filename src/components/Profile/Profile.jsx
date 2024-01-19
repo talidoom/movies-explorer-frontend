@@ -14,7 +14,7 @@ function Profile({
   setCurrentUser,
   setIsLoaderVisible,
   isLoaderVisible,
-  setTooltipState }) {
+  setToolTipState }) {
 
   const currentUser = useContext(CurrentContext);
   const {
@@ -37,7 +37,7 @@ function Profile({
       .setUserInfo(data.firstName, data.email)
       .then((res) => {
         setCurrentUser(res);
-        setTooltipState({
+        setToolTipState({
           isVisible: true,
           isSuccessful: true,
           text: "Данные изменены",
@@ -45,7 +45,7 @@ function Profile({
       })
       .catch((err) => {
         console.log(`Ошибка ${err}`);
-        setTooltipState({
+        setToolTipState({
           isVisible: true,
           isSuccessful: false,
           text: "Что-то пошло не так...",

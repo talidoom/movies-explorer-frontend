@@ -5,6 +5,15 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import Button from '../Button/Button';
 import { useContext, useState, useEffect } from 'react';
 import { CurrentContext } from '../../utils/context/currentcontext';
+import { DESKTOP_CARDS_DISPLAY_LIMIT,
+TABLET_CARDS_DISPLAY_LIMIT,
+MOBILE_CARDS_DISPLAY_LIMIT,
+MAX_SHORT_FILM_LENGTH,
+DISPLAY_DESKTOP,
+DISPLAY_TABLET,
+DISPLAY_DESKTOP_COUNT_CARD,
+DISPLAY_TABLET_COUNT_CARD,
+DISPLAY_MOBILE_COUNT_CARD } from '../../utils/constants/constants';
 
 const MoviesCardList = ({
   trueMovies,
@@ -18,11 +27,11 @@ const MoviesCardList = ({
   const currentUser = useContext(CurrentContext);
   const [shownMovies, setShownMovies] = useState(6)
 
-  const filterMovie = isShortMovie ? trueMovies.filter((movie) => movie.duration <= 40) : trueMovies;
+  const filterMovie = isShortMovie ? trueMovies.filter((movie) => movie.duration <= MAX_SHORT_FILM_LENGTH) : trueMovies;
   const saveCurrentUser = saveMovies.filter(
     (movie) => movie.owner === currentUser._id
   );
-  const filterSaveMovie = isShortMovie ? saveCurrentUser.filter((movie) => movie.duration <= 40) : saveCurrentUser;
+  const filterSaveMovie = isShortMovie ? saveCurrentUser.filter((movie) => movie.duration <= MAX_SHORT_FILM_LENGTH) : saveCurrentUser;
   const filterSaveMovieSearch = searchSavedMovies !== ""
       ? filterSaveMovie.filter((movie) =>
           movie.nameRU.toLowerCase().includes(searchSavedMovies?.toLowerCase())
@@ -36,12 +45,12 @@ const MoviesCardList = ({
 
   function setMoviesShownCount() {
     const display = window.innerWidth
-    if (display > 1279) {
-      setShownMovies(16)
-    } else if (display > 767) {
-      setShownMovies(8)
+    if (display > DISPLAY_DESKTOP) {
+      setShownMovies(DISPLAY_DESKTOP_COUNT_CARD)
+    } else if (display > DISPLAY_TABLET) {
+      setShownMovies(DISPLAY_TABLET_COUNT_CARD)
     } else {
-      setShownMovies(5)
+      setShownMovies(DISPLAY_MOBILE_COUNT_CARD)
     }
   }
 
@@ -57,14 +66,13 @@ const MoviesCardList = ({
   }, [])
 
   function expandMoviesDisplay() {
-    console.log('dfdgfhg');
-    const display = window.innerWidth
-    if (display > 1279) {
-      setShownMovies(shownMovies + 4)
-    } else if (display > 767) {
-      setShownMovies(shownMovies + 2)
+    const display = window.innerWidth;
+    if (display > DISPLAY_DESKTOP) {
+      setShownMovies(shownMovies + DESKTOP_CARDS_DISPLAY_LIMIT)
+    } else if (display > DISPLAY_TABLET) {
+      setShownMovies(shownMovies + TABLET_CARDS_DISPLAY_LIMIT)
     } else {
-      setShownMovies(shownMovies + 2)
+      setShownMovies(shownMovies + MOBILE_CARDS_DISPLAY_LIMIT)
     }
   }
 
@@ -111,13 +119,16 @@ const MoviesCardList = ({
 
       {location.pathname === '/movies'
         &&
-        <Button
+        trueMovies.length > shownMovies ? (
+          <Button
           text={'Ещё'}
           type={'more'}
           onClick={expandMoviesDisplay}
-      />
+        />
+        ) : (
+          ""
+        )
       }
-
     </>
   );
 };

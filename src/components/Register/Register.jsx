@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import mainApi from '../../utils/MainApi';
 import { patternEmail} from '../../utils/constants/constants';
 
-const Register = ({ handleLogin, isLoaderVisible, setIsLoaderVisible, setTooltipState }) => {
+const Register = ({ handleLogin, isLoaderVisible, setIsLoaderVisible, setToolTipState, setIsLoading }) => {
   const {
     register,
     formState: { errors, isValid },
@@ -23,7 +23,7 @@ const Register = ({ handleLogin, isLoaderVisible, setIsLoaderVisible, setTooltip
           if (data.token) {
             localStorage.setItem("token", data.token);
             handleLogin();
-            setTooltipState({
+            setToolTipState({
               isVisible: true,
               isSuccessful: true,
               text: "Вы успешно зарегистрировались!",
@@ -34,7 +34,7 @@ const Register = ({ handleLogin, isLoaderVisible, setIsLoaderVisible, setTooltip
       })
       .catch((err) => {
         console.log(`Err ${err}`);
-        setTooltipState({
+        setToolTipState({
           isVisible: true,
           isSuccessful: false,
           text: "При регистрации указан email, который уже существует на сервере!",
@@ -42,6 +42,7 @@ const Register = ({ handleLogin, isLoaderVisible, setIsLoaderVisible, setTooltip
       })
       .finally(() => {
         setIsLoaderVisible(false);
+        setIsLoading(false);
       });
   };
 

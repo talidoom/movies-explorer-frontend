@@ -1,11 +1,11 @@
 import "./InfoToolTip.css";
 import Button from "../Button/Button";
 
-function InfoTooltip({ tooltipState, setTooltipState }) {
-  const { isVisible, isSuccessful, text } = tooltipState;
+function InfoToolTip({ toolTipState, setToolTipState }) {
+  const { isVisible, isSuccessful, text } = toolTipState;
 
   const closePopup = () => {
-    setTooltipState({
+    setToolTipState({
       isVisible: false,
       isSuccessful: isSuccessful,
       text: text,
@@ -22,4 +22,4 @@ function InfoTooltip({ tooltipState, setTooltipState }) {
   );
 }
 
-export default InfoTooltip;
+export default InfoToolTip;

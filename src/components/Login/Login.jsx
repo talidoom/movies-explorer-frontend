@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import mainApi from '../../utils/MainApi';
 import { patternEmail } from '../../utils/constants/constants';
 
-const Login = ({ isLoaderVisible, handleLogin, setIsLoaderVisible, setTooltipState}) => {
+const Login = ({ isLoaderVisible, handleLogin, setIsLoaderVisible, setToolTipState}) => {
   const {
     register,
     formState: { errors, isValid },
@@ -19,7 +19,7 @@ const Login = ({ isLoaderVisible, handleLogin, setIsLoaderVisible, setTooltipSta
     mainApi
       .login(formdata.password, formdata.email)
       .then((data) => {
-        setTooltipState({
+        setToolTipState({
           isVisible: true,
           isSuccessful: true,
           text: "Авторизация прошла успешно",
@@ -30,7 +30,7 @@ const Login = ({ isLoaderVisible, handleLogin, setIsLoaderVisible, setTooltipSta
       })
       .catch((err) => {
         console.log(`Ошибка ${err}`);
-        setTooltipState({
+        setToolTipState({
           isVisible: true,
           isSuccessful: false,
           text: "Неправильная почта или пароль",

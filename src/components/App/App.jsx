@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -11,12 +11,13 @@ import Sidebar from '../Sidebar/Sidebar';
 import NotFound from '../PageNotFound/NotFound';
 import mainApi from '../../utils/MainApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import InfoTooltip from '../InfoTooltip/InfoTooltip';
+import InfoToolTip from '../InfoTooltip/InfoToolTip';
 import { CurrentContext } from '../../utils/context/currentcontext';
 import Preloader from "../Preloader/Preloader";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
   const [isSide, setIsSide] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
@@ -28,13 +29,15 @@ const App = () => {
     JSON.parse(localStorage.getItem("checkboxState")) || false
   );
 
-  const [tooltipState, setTooltipState] = useState({
+  const [toolTipState, setToolTipState] = useState({
     isVisible: false,
     isSuccessful: false,
     text: "",
   });
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const path = location.pathname;
 
   const checkToken = () => {
     const token = localStorage.getItem("token");
@@ -49,11 +52,11 @@ const App = () => {
             setIsLoggedIn(true);
             mainApi.getMovies().then((movies) => {
               setSaveMovies(movies.reverse());
-            });
+            })
+            navigate(path)
           }
         })
         .catch((res) => {
-          console.log(res);
           setIsLoggedIn(false);
           localStorage.clear();
           navigate("/signin");
@@ -69,9 +72,10 @@ const App = () => {
 
   const handleLogin = () => {
     checkToken();
+    setIsLoading(true);
     setIsLoggedIn(true);
     localStorage.setItem("loggedIn", true);
-    navigate("/movies");
+    navigate("/movies", {replace: true});
   };
 
   const logOut = () => {
@@ -108,7 +112,7 @@ const App = () => {
     <CurrentContext.Provider value={currentUser}>
     <section className='app'>
       <Preloader isLoaderVisible={isLoaderVisible} />
-      <InfoTooltip tooltipState={tooltipState} setTooltipState={setTooltipState} />
+      <InfoToolTip toolTipState={toolTipState} setToolTipState={setToolTipState} />
       <Sidebar
         isLoggedIn={isLoggedIn}
         closeSide={closeSide}
@@ -124,13 +128,13 @@ const App = () => {
           path="/signin"
           element={
             isLoggedIn ? (
-              <Navigate to="/" />
+              <Navigate to="/movies" />
             ) : (
               <Login
                 handleLogin={handleLogin}
                 isLoaderVisible={isLoaderVisible}
                 setIsLoaderVisible={setIsLoaderVisible}
-                setTooltipState={setTooltipState}
+                setToolTipState={setToolTipState}
               />
             )
           }
@@ -139,13 +143,14 @@ const App = () => {
           path="/signup"
           element={
             isLoggedIn ? (
-              <Navigate to="/" />
+              <Navigate to="/movies" />
             ) : (
               <Register
                 handleLogin={handleLogin}
+                setIsLoading={setIsLoading}
                 isLoaderVisible={isLoaderVisible}
                 setIsLoaderVisible={setIsLoaderVisible}
-                setTooltipState={setTooltipState}
+                setToolTipState={setToolTipState}
               />
             )
           }
@@ -198,7 +203,7 @@ const App = () => {
               setCurrentUser={setCurrentUser}
               setIsLoaderVisible={setIsLoaderVisible}
               isLoaderVisible={isLoaderVisible}
-              setTooltipState={setTooltipState}
+              setToolTipState={setToolTipState}
             />
         }
       />

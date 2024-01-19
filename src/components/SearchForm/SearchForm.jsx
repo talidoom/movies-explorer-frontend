@@ -19,7 +19,7 @@ const SearchForm = ({
   const { pathname } = useLocation();
   const {
     register,
-    formState: { errors, isValid },
+    formState: { isValid },
     handleSubmit,
   } = useForm({
     mode: "onChange",
@@ -45,7 +45,6 @@ const SearchForm = ({
         moviesApi
           .getMovies()
           .then((res) => {
-            console.log(res)
             setMovies(res);
             const foundedMovies = res.filter(getFilteedMovies);
             if (foundedMovies.length !== 0) {
