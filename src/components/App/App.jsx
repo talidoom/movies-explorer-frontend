@@ -12,9 +12,6 @@ import NotFound from '../PageNotFound/NotFound';
 import mainApi from '../../utils/MainApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
-import { useMediaQuery } from 'react-responsive';
-import { TABLET_WIDTH, MOBILE_WIDTH } from '../../utils/constants/constants';
-
 import { CurrentContext } from '../../utils/context/currentcontext';
 import Preloader from "../Preloader/Preloader";
 
@@ -36,9 +33,6 @@ const App = () => {
     isSuccessful: false,
     text: "",
   });
-
-  const tablet = useMediaQuery({ query: TABLET_WIDTH });
-  const mobile = useMediaQuery({ query: MOBILE_WIDTH });
 
   const navigate = useNavigate();
 
@@ -174,8 +168,6 @@ const App = () => {
               isShortMovie={isShortMovie}
               setIsShortMovie={setIsShortMovie}
               setIsLoaderVisible={setIsLoaderVisible}
-              mobile={mobile}
-              tablet={tablet}
             />
         }
       />

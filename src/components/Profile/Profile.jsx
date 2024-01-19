@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import mainApi from '../../utils/MainApi';
 import { CurrentContext } from '../../utils/context/currentcontext';
-import { patternName, patternEmail } from '../../utils/constants/constants';
+import { patternEmail } from '../../utils/constants/constants';
 
 function Profile({
   isLoggedIn,

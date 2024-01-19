@@ -17,9 +17,7 @@ const Movies = ({
   setTrueMovies,
   isShortMovie,
   setIsShortMovie,
-  setIsLoaderVisible,
-  mobile,
-  tablet }) => {
+  setIsLoaderVisible }) => {
 
   return (
     <>
@@ -41,8 +39,6 @@ const Movies = ({
           saveMovies={saveMovies}
           setSaveMovies={setSaveMovies}
           isShortMovie={isShortMovie}
-          mobile={mobile}
-          tablet={tablet}
         />
       </section>
       <Footer />

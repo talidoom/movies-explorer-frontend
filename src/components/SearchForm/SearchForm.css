@@ -38,7 +38,7 @@
   padding: 13px 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .search {
     padding: 80px 0 30px;
   }

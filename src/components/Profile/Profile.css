@@ -89,7 +89,7 @@
   color: #8b8b8b;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .profile {
     padding: 236px 0 269px;
   }

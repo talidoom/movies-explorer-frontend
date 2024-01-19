@@ -37,7 +37,7 @@
   margin: 75px 70px 0 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .promo {
     flex-direction: column-reverse;
     justify-content: center;

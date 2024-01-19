@@ -3,7 +3,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Button from '../Button/Button';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { CurrentContext } from '../../utils/context/currentcontext';
 
 const MoviesCardList = ({
@@ -12,12 +12,11 @@ const MoviesCardList = ({
   saveMovies,
   setSaveMovies,
   isShortMovie,
-  mobile,
-  tablet,
   searchSavedMovies }) => {
 
   const location = useLocation();
   const currentUser = useContext(CurrentContext);
+  const [shownMovies, setShownMovies] = useState(6)
 
   const filterMovie = isShortMovie ? trueMovies.filter((movie) => movie.duration <= 40) : trueMovies;
   const saveCurrentUser = saveMovies.filter(
@@ -29,43 +28,45 @@ const MoviesCardList = ({
           movie.nameRU.toLowerCase().includes(searchSavedMovies?.toLowerCase())
         ) : filterSaveMovie;
 
-  const [displayState, setDisplayState] = useState({
-    showedMovies: 4,
-    loadMoreMovies: 4,
-  });
-
   function getSavedMovie(arr, movie) {
     return arr.find((item) => {
       return item.movieId === movie.id;
     });
   }
 
-  React.useEffect(() => {
-    if (mobile) {
-      setDisplayState({
-        showedMovies: 5,
-        loadMoreMovies: 5,
-      });
-    } else if (tablet) {
-      setDisplayState({
-        showedMovies: 4,
-        loadMoreMovies: 4,
-      });
+  function setMoviesShownCount() {
+    const display = window.innerWidth
+    if (display > 1279) {
+      setShownMovies(16)
+    } else if (display > 767) {
+      setShownMovies(8)
     } else {
-      setDisplayState({
-        showedMovies: 4,
-        loadMoreMovies: 4,
-      });
+      setShownMovies(5)
     }
-  }, [mobile, tablet]);
+  }
 
-  const handleMore = () => {
-    setDisplayState((prevState) => ({
-      ...prevState,
-      showedMovies:
-      displayState.showedMovies + displayState.loadMoreMovies,
-    }));
-  };
+   useEffect(() => {
+    setMoviesShownCount()
+  }, [trueMovies])
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.removeEventListener("resize", setMoviesShownCount)
+      window.addEventListener("resize", setMoviesShownCount)
+    }, 100)
+  }, [])
+
+  function expandMoviesDisplay() {
+    console.log('dfdgfhg');
+    const display = window.innerWidth
+    if (display > 1279) {
+      setShownMovies(shownMovies + 4)
+    } else if (display > 767) {
+      setShownMovies(shownMovies + 2)
+    } else {
+      setShownMovies(shownMovies + 2)
+    }
+  }
 
   return (
     <>
@@ -78,11 +79,11 @@ const MoviesCardList = ({
     {location.pathname === "/saved-movies" &&
         filterSaveMovieSearch.length === 0 && (
           <p className="movies__not-found">Ничего нет</p>
-    )} 
+    )}
 
     {location.pathname === "/movies" && (
         <ul className="movies-cardlist">
-          {filterMovie?.slice(0, displayState.showedMovies).map((movie) => (
+          {filterMovie?.slice(0, shownMovies).map((movie) => (
             <MoviesCard
               setIsLoaderVisible={setIsLoaderVisible}
               key={movie.id}
@@ -108,23 +109,15 @@ const MoviesCardList = ({
         </ul>
       )}
 
-
-      {/* {location.pathname === '/movies' && (
-        <ul className='movies-cardlist'>
-          <MoviesCard/>
-        </ul>
-      )}
-      {location.pathname === '/saved-movies' && (
-        <ul className='movies-cardlist'>
-          <MoviesCard />
-        </ul>
-      )} */}
       {location.pathname === '/movies'
-        && <Button
+        &&
+        <Button
           text={'Ещё'}
           type={'more'}
-          onClick={handleMore}
-      />}
+          onClick={expandMoviesDisplay}
+      />
+      }
+
     </>
   );
 };

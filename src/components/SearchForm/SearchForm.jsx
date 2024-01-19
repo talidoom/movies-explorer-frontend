@@ -32,6 +32,9 @@ const SearchForm = ({
   });
 
   const onSubmit = (searchdata) => {
+    const lowerSearchData = searchdata.movieName.toLowerCase()
+    const getFilteedMovies = (item) => { return item.nameRU.toLowerCase().includes(lowerSearchData) ||
+                item.nameEN.toLowerCase().includes(lowerSearchData)}
     if (location === "saved") {
       getSearchSave(searchdata.movieName);
       localStorage.setItem("searchSavedMoviesValue", searchdata.movieName);
@@ -41,14 +44,14 @@ const SearchForm = ({
         setIsLoaderVisible(true);
         moviesApi
           .getMovies()
-          .then((movies) => {
-            setMovies(movies);
-            const foundedMovies = movies.filter(
-              (movie) =>
-                movie.nameRU.toLowerCase().includes(searchdata.movieName.toLowerCase())
-            );
+          .then((res) => {
+            console.log(res)
+            setMovies(res);
+            const foundedMovies = res.filter(getFilteedMovies);
             if (foundedMovies.length !== 0) {
               setTrueMovies(foundedMovies);
+            } else {
+              setTrueMovies([])
             }
             localStorage.setItem("foundedMovies", JSON.stringify(foundedMovies));
           })
@@ -59,9 +62,7 @@ const SearchForm = ({
             setIsLoaderVisible(false);
           });
       } else {
-        const foundedMovies = movies.filter((movie) =>
-          movie.nameRU.toLowerCase().includes(searchdata.movieName.toLowerCase())
-        );
+        const foundedMovies = movies.filter(getFilteedMovies);
         localStorage.setItem("foundedMovies", JSON.stringify(foundedMovies));
         setTrueMovies(foundedMovies);
       }
