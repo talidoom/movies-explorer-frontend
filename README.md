@@ -9,7 +9,11 @@
 
 Адрес репозитория: https://github.com/talidoom/movies-explorer-frontend
 
+- Pull Requests 1: https://github.com/talidoom/movies-explorer-api/pull/1
+- Pull Requests 2: https://github.com/talidoom/movies-explorer-frontend/pull/1
+- Pull Requests 3: https://github.com/talidoom/movies-explorer-frontend/pull/2
+
 IP: 158.160.48.80
 
-Frontend: movies-talidoom.nomoredomainsmonster.ru
-Backend: api.movies-talidoom.nomoredomainsmonster.ru
+- Frontend: https://movies-talidoom.nomoredomainsmonster.ru
+- Backend: https://api.movies-talidoom.nomoredomainsmonster.ru
