@@ -12,8 +12,9 @@ const FilterCheckbox = ({ setIsShortMovie, isShortMovie }) => {
     else {
       setIsShortMovie(
         JSON.parse(localStorage.getItem("savedCheckboxState")) || false
-      );
+      )
     }
+    return setIsShortMovie(false);
   }, [pathname, setIsShortMovie]);
 
   const handleCheckbox = () => {

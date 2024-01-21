@@ -26,12 +26,6 @@ const SearchForm = ({
     }
   }, [location]);
 
-  // useEffect(() => {
-  //   if(inputValue) {
-  //     // getSearchSave(inputValue)
-  //   }
-  // }, [isShortMovie]);
-
   const onSubmit = (searchdata) => {
         const lowerSearchData = searchdata.movieName.toLowerCase()
         const getFilteedMovies = (item) => { return item.nameRU.toLowerCase().includes(lowerSearchData) ||
