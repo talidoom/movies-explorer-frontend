@@ -1,76 +1,27 @@
 import './MoviesCard.css';
 import Button from '../Button/Button';
 import { useLocation } from 'react-router-dom';
-import mainApi from '../../utils/MainApi';
 import { urlMove } from '../../utils/urlApi';
 
 const MoviesCard = ({
-  setIsLoaderVisible,
   movie,
-  saveMovies,
-  setSaveMovies,
-  saved
-}) => {
-
+  saved,
+  handleLike,
+  handleDislike,
+  handleDelete }) => {
   const location = useLocation();
 
-  const handleLike = () => {
-    setIsLoaderVisible(true);
-    mainApi
-      .createMovie(
-        movie.country,
-        movie.director,
-        movie.duration,
-        movie.year,
-        movie.description,
-        `${urlMove}${movie.image.url}`,
-        movie.trailerLink,
-        movie.nameRU,
-        movie.nameEN,
-        `${urlMove}${movie.image.url}`,
-        movie.id
-      )
-      .then((res) => {
-        setSaveMovies([res, ...saveMovies]);
-      })
-      .catch((err) => {
-        console.log(`Ошибка ${err}`);
-      })
-      .finally(() => {
-        setIsLoaderVisible(false);
-      });
-  };
+  function handleLikeMovie () {
+    handleLike(movie);
+  }
 
-  const handleDislike = () => {
-    setIsLoaderVisible(true);
-    const saveMovie = saveMovies?.find((item) => item.movieId === movie.id);
-    mainApi
-      .deleteMovie(saveMovie._id)
-      .then(() => {
-        setSaveMovies((newMovies) =>
-          newMovies.filter((m) => m.movieId !== movie.id)
-        );
-      })
-      .catch((err) => {
-        console.log(`Ошибка ${err}`);
-      })
-      .finally(() => {
-        setIsLoaderVisible(false);
-      });
-  };
+  function handleDislikeMovie () {
+    handleDislike(movie)
+  }
 
-  const handleDelete = () => {
-    mainApi
-      .deleteMovie(movie._id)
-      .then(() => {
-        setSaveMovies((newMovies) =>
-          newMovies.filter((m) => m._id !== movie._id)
-        );
-      })
-      .catch((err) => {
-        console.log(`Ошибка ${err}`);
-      })
-  };
+  function handleDeleteMovies () {
+    handleDelete(movie)
+  }
 
   return (
     <section className='movies-card'>
@@ -102,13 +53,13 @@ const MoviesCard = ({
             text={''}
             type={'movies-like'}
             secondClass={ saved ? "button_movies-like-active" : "" }
-            onClick={saved ? handleDislike : handleLike}
+            onClick={saved ? handleDislikeMovie : handleLikeMovie}
           />
         ) : (
           <Button
             text={''}
             type={'movies-delete'}
-            onClick={handleDelete}
+            onClick={handleDeleteMovies}
           />
         )}
       </div>

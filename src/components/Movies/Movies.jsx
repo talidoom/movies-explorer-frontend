@@ -11,13 +11,16 @@ const Movies = ({
   movies,
   isLoaderVisible,
   saveMovies,
-  setSaveMovies,
   setMovies,
   trueMovies,
   setTrueMovies,
   isShortMovie,
   setIsShortMovie,
-  setIsLoaderVisible }) => {
+  setIsLoaderVisible,
+  setToolTipState,
+  handleLike,
+  handleDislike,
+ }) => {
 
   return (
     <>
@@ -32,13 +35,14 @@ const Movies = ({
           isShortMovie={isShortMovie}
           setIsShortMovie={setIsShortMovie}
           location={'all-movies'}
+          setToolTipState={setToolTipState}
         />
         <MoviesCardList
           trueMovies={trueMovies}
-          setIsLoaderVisible={setIsLoaderVisible}
           saveMovies={saveMovies}
-          setSaveMovies={setSaveMovies}
           isShortMovie={isShortMovie}
+          handleLike={handleLike}
+          handleDislike={handleDislike}
         />
       </section>
       <Footer />

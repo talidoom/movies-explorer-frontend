@@ -14,6 +14,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import InfoToolTip from '../InfoTooltip/InfoToolTip';
 import { CurrentContext } from '../../utils/context/currentcontext';
 import Preloader from "../Preloader/Preloader";
+import { urlMove } from '../../utils/urlApi';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,6 +25,7 @@ const App = () => {
   const [saveMovies, setSaveMovies] = useState([]);
   const [trueMovies, setTrueMovies] = useState([]);
   const [movies, setMovies] = useState([]);
+  const [searchSavedMovies, setSearchSavedMovies] = useState("");
 
   const [isShortMovie, setIsShortMovie] = useState(
     JSON.parse(localStorage.getItem("checkboxState")) || false
@@ -34,7 +36,7 @@ const App = () => {
     isSuccessful: false,
     text: "",
   });
-
+  const { isVisible, isSuccessful, text } = toolTipState;
   const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname;
@@ -108,11 +110,87 @@ const App = () => {
     document.removeEventListener('keydown', handleEscClick);
   };
 
+  const closePopup = () => {
+    setToolTipState({
+      isVisible: false,
+      isSuccessful: isSuccessful,
+      text: text,
+    });
+  };
+  // __________________________
+
+  const getSearchSave = (item) => {
+    setSearchSavedMovies(item);
+  };
+
+  const handleLike = (item) => {
+    setIsLoaderVisible(true);
+    mainApi
+      .createMovie(
+        item.country,
+        item.director,
+        item.duration,
+        item.year,
+        item.description,
+        `${urlMove}${item.image.url}`,
+        item.trailerLink,
+        item.nameRU,
+        item.nameEN,
+        `${urlMove}${item.image.url}`,
+        item.id
+      )
+      .then((res) => {
+        setSaveMovies([res, ...saveMovies]);
+      })
+      .catch((err) => {
+        console.log(`Ошибка ${err}`);
+      })
+      .finally(() => {
+        setIsLoaderVisible(false);
+      });
+  };
+
+  const handleDislike = (mov) => {
+    setIsLoaderVisible(true);
+    const saveMovie = saveMovies?.find((item) => item.movieId === mov.id);
+    mainApi
+      .deleteMovie(saveMovie._id)
+      .then(() => {
+        setSaveMovies((newMovies) =>
+          newMovies.filter((m) => m.movieId !== mov.id)
+        );
+      })
+      .catch((err) => {
+        console.log(`Ошибка ${err}`);
+      })
+      .finally(() => {
+        setIsLoaderVisible(false);
+      });
+  };
+
+  const handleDelete = (mov) => {
+    mainApi
+      .deleteMovie(mov._id)
+      .then(() => {
+        setSaveMovies((newMovies) =>
+          newMovies.filter((m) => m._id !== mov._id)
+        );
+      })
+      .catch((err) => {
+        console.log(`Ошибка ${err}`);
+      })
+  };
+
+
   return (
     <CurrentContext.Provider value={currentUser}>
     <section className='app'>
       <Preloader isLoaderVisible={isLoaderVisible} />
-      <InfoToolTip toolTipState={toolTipState} setToolTipState={setToolTipState} />
+      <InfoToolTip
+      closePopup={closePopup}
+      isVisible={isVisible}
+      text={text}
+      />
       <Sidebar
         isLoggedIn={isLoggedIn}
         closeSide={closeSide}
@@ -166,13 +244,15 @@ const App = () => {
               isLoaderVisible={isLoaderVisible}
               movies={movies}
               saveMovies={saveMovies}
-              setSaveMovies={setSaveMovies}
               setMovies={setMovies}
               trueMovies={trueMovies}
               setTrueMovies={setTrueMovies}
               isShortMovie={isShortMovie}
               setIsShortMovie={setIsShortMovie}
               setIsLoaderVisible={setIsLoaderVisible}
+              setToolTipState={setToolTipState}
+              handleLike={handleLike}
+              handleDislike={handleDislike}
             />
         }
       />
@@ -184,11 +264,13 @@ const App = () => {
               isLoggedIn={isLoggedIn}
               openSide={openSide}
               saveMovies={saveMovies}
-              setSaveMovies={setSaveMovies}
               isShortMovie={isShortMovie}
               setIsShortMovie={setIsShortMovie}
               trueMovies={trueMovies}
               setIsLoaderVisible={setIsLoaderVisible}
+              handleDelete={handleDelete}
+              getSearchSave={getSearchSave}
+              searchSavedMovies={searchSavedMovies}
             />
         }
       />

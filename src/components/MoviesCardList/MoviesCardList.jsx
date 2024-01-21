@@ -17,11 +17,12 @@ DISPLAY_MOBILE_COUNT_CARD } from '../../utils/constants/constants';
 
 const MoviesCardList = ({
   trueMovies,
-  setIsLoaderVisible,
   saveMovies,
-  setSaveMovies,
   isShortMovie,
-  searchSavedMovies }) => {
+  searchSavedMovies,
+  handleLike,
+  handleDislike,
+  handleDelete }) => {
 
   const location = useLocation();
   const currentUser = useContext(CurrentContext);
@@ -93,12 +94,11 @@ const MoviesCardList = ({
         <ul className="movies-cardlist">
           {filterMovie?.slice(0, shownMovies).map((movie) => (
             <MoviesCard
-              setIsLoaderVisible={setIsLoaderVisible}
               key={movie.id}
               movie={movie}
-              saveMovies={saveMovies}
-              setSaveMovies={setSaveMovies}
               saved={getSavedMovie(saveMovies, movie)}
+              handleLike={handleLike}
+              handleDislike={handleDislike}
             />
           ))}
         </ul>
@@ -108,10 +108,9 @@ const MoviesCardList = ({
         <ul className="movies-cardlist">
           {filterSaveMovieSearch?.map((saveMovie) => (
             <MoviesCard
-              setIsLoaderVisible={setIsLoaderVisible}
-              setSaveMovies={setSaveMovies}
               key={saveMovie._id}
               movie={saveMovie}
+              handleDelete={handleDelete}
             />
           ))}
         </ul>

@@ -1,16 +1,7 @@
 import "./InfoToolTip.css";
 import Button from "../Button/Button";
 
-function InfoToolTip({ toolTipState, setToolTipState }) {
-  const { isVisible, isSuccessful, text } = toolTipState;
-
-  const closePopup = () => {
-    setToolTipState({
-      isVisible: false,
-      isSuccessful: isSuccessful,
-      text: text,
-    });
-  };
+function InfoToolTip({ closePopup, text, isVisible }) {
 
   return (
     <div className={`infotooltip ${isVisible && "infotooltip_opened"}`}>

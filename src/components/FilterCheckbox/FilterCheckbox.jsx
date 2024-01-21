@@ -1,11 +1,11 @@
 import './FilterCheckbox.css';
 import { useLocation } from 'react-router-dom';
-import React from 'react';
+import { useEffect } from 'react';
 
 const FilterCheckbox = ({ setIsShortMovie, isShortMovie }) => {
   const { pathname } = useLocation();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (pathname === "/movies") {
       setIsShortMovie(JSON.parse(localStorage.getItem("checkboxState")) || false);
     }

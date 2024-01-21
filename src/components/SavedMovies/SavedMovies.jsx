@@ -9,17 +9,13 @@ const SavedMovies = ({
   isLoggedIn,
   openSide,
   saveMovies,
-  setSaveMovies,
   isShortMovie,
   setIsShortMovie,
   trueMovies,
-  setIsLoaderVisible }) => {
-
-  const [searchSavedMovies, setSearchSavedMovies] = useState("");
-
-  const getSearchSave = (item) => {
-    setSearchSavedMovies(item);
-  };
+  setIsLoaderVisible,
+  handleDelete,
+  getSearchSave,
+  searchSavedMovies }) => {
 
   return (
     <>
@@ -36,8 +32,8 @@ const SavedMovies = ({
           trueMovies={trueMovies}
           isShortMovie={isShortMovie}
           saveMovies={saveMovies}
-          setSaveMovies={setSaveMovies}
           searchSavedMovies={searchSavedMovies}
+          handleDelete={handleDelete}
         />
       </section>
       <Footer />
