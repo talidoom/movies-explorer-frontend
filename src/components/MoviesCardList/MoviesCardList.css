@@ -1,0 +1,32 @@
+.movies-cardlist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 270px);
+  gap: 38px 20px;
+  justify-content: space-evenly;
+  padding: 0;
+  max-width: 100%;
+  margin: 70px 0 30px ;
+}
+
+.movies__not-found {
+  margin: 70px auto 30px;
+  font-size: 19px;
+  line-height: 24px;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .movies-cardlist {
+    grid-template-columns: repeat(auto-fit, 339px);
+    gap: 30px 30px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .movies-cardlist {
+    margin: 40px 0 30px;
+    grid-template-columns: repeat(auto-fit, 300px);
+    gap: 34px;
+  }
+}
