@@ -1,11 +1,12 @@
-import './SavedMovies.css';
-import Header from '../Header/Header';
-import SearchForm from '../SearchForm/SearchForm';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import Footer from '../Footer/Footer';
-import { useState } from 'react';
+import "./SavedMovies.css";
+import Header from "../Header/Header";
+import SearchForm from "../SearchForm/SearchForm";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import Footer from "../Footer/Footer";
+import { useState, useEffect } from "react";
 
 const SavedMovies = ({
+  movies,
   isLoggedIn,
   openSide,
   saveMovies,
@@ -15,18 +16,38 @@ const SavedMovies = ({
   setIsLoaderVisible,
   handleDelete,
   getSearchSave,
-  searchSavedMovies }) => {
+  setMovies,
+  setTrueMovies,
+  isLoaderVisible,
+  searchSavedMovies,
+}) => {
+  //console.log(saveMovies);
+  /*useEffect(() => {
+console.log('обновленный массив сохраненных фильмов', ...saveMovies);
+},[...saveMovies])*/
+
+  useEffect(() => {
+    //console.log(location)
+    // Сбросить фильтры и поле поиска при возвращении на страницу сохраненных фильмов
+    //localStorage.removeItem("savedCheckboxState");
+    //localStorage.removeItem("searchSavedMoviesValue");
+    //localStorage.setItem("foundedMovies", JSON.stringify(saveMovies));
+  }, []);
 
   return (
     <>
       <Header isLoggedIn={isLoggedIn} openSide={openSide} />
-      <section className='saved-movies'>
+      <section className="saved-movies">
         <SearchForm
+          movies={movies}
           isShortMovie={isShortMovie}
           setIsShortMovie={setIsShortMovie}
           setIsLoaderVisible={setIsLoaderVisible}
-          location={'saved'}
           getSearchSave={getSearchSave}
+          location={"saved"}
+          setMovies={setMovies}
+          setTrueMovies={setTrueMovies}
+          isLoaderVisible={isLoaderVisible}
         />
         <MoviesCardList
           trueMovies={trueMovies}
@@ -34,6 +55,7 @@ const SavedMovies = ({
           saveMovies={saveMovies}
           searchSavedMovies={searchSavedMovies}
           handleDelete={handleDelete}
+          locationPath={"saved"}
         />
       </section>
       <Footer />

@@ -17,25 +17,25 @@ const Movies = ({
   isShortMovie,
   setIsShortMovie,
   setIsLoaderVisible,
-  setToolTipState,
   handleLike,
   handleDislike,
- }) => {
+  getSearchSave,
+}) => {
 
   return (
     <>
       <Header isLoggedIn={isLoggedIn} openSide={openSide} />
       <section className='movies'>
         <SearchForm
-          isLoaderVisible={isLoaderVisible}
           movies={movies}
+          location={"movies"}
           setMovies={setMovies}
-          setIsLoaderVisible={setIsLoaderVisible}
-          setTrueMovies={setTrueMovies}
           isShortMovie={isShortMovie}
+          getSearchSave={getSearchSave}
+          setTrueMovies={setTrueMovies}
+          isLoaderVisible={isLoaderVisible}
+          setIsLoaderVisible={setIsLoaderVisible}
           setIsShortMovie={setIsShortMovie}
-          location={'all-movies'}
-          setToolTipState={setToolTipState}
         />
         <MoviesCardList
           trueMovies={trueMovies}
@@ -43,6 +43,7 @@ const Movies = ({
           isShortMovie={isShortMovie}
           handleLike={handleLike}
           handleDislike={handleDislike}
+          locationPath={"movie"}
         />
       </section>
       <Footer />

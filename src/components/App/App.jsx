@@ -11,7 +11,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import NotFound from '../PageNotFound/NotFound';
 import mainApi from '../../utils/MainApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import InfoToolTip from '../InfoTooltip/InfoToolTip';
+import InfoToolTip from '../InfoTooltip/InfoTooltip';
 import { CurrentContext } from '../../utils/context/currentcontext';
 import Preloader from "../Preloader/Preloader";
 import { urlMove } from '../../utils/urlApi';
@@ -253,6 +253,7 @@ const App = () => {
               setToolTipState={setToolTipState}
               handleLike={handleLike}
               handleDislike={handleDislike}
+              getSearchSave={getSearchSave}
             />
         }
       />
@@ -266,7 +267,11 @@ const App = () => {
               saveMovies={saveMovies}
               isShortMovie={isShortMovie}
               setIsShortMovie={setIsShortMovie}
+              movies={movies}
+              setMovies={setMovies}
               trueMovies={trueMovies}
+              setTrueMovies={setTrueMovies}
+              isLoaderVisible={isLoaderVisible}
               setIsLoaderVisible={setIsLoaderVisible}
               handleDelete={handleDelete}
               getSearchSave={getSearchSave}
